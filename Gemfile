@@ -53,3 +53,5 @@ gem 'rails_12factor', group: :production
 
 # Foundation as CSS framework
 gem 'foundation-rails', '~> 5.4.5.0'
+# Form generation
+gem 'simple_form', '~> 3.0.2'
