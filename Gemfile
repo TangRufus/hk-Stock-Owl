@@ -39,5 +39,9 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Debugging
+gem 'binding_of_caller', '~> 0.7.2', group: :development
+gem 'better_errors', '~> 2.0.0', group: :development
+
 # For Heroku static asset serving
 gem 'rails_12factor', group: :production
