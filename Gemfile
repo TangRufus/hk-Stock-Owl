@@ -14,8 +14,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-# Foundation as CSS framework
-gem 'foundation-rails', '~> 5.4.5.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -46,5 +44,12 @@ gem 'binding_of_caller', '~> 0.7.2', group: :development
 gem 'better_errors', '~> 2.0.0', group: :development
 gem 'annotate', '~> 2.6.5', group: :development
 
+gem 'rails_layout', '~> 1.0.23', group: :development
+
+
 # For Heroku static asset serving
 gem 'rails_12factor', group: :production
+
+
+# Foundation as CSS framework
+gem 'foundation-rails', '~> 5.4.5.0'
