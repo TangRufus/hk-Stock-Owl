@@ -50,7 +50,8 @@ gem 'rails_layout', '~> 1.0.23', group: :development
 # For Heroku static asset serving
 gem 'rails_12factor', group: :production
 
-
+# Membership
+gem 'devise', '~> 3.4.0'
 # Foundation as CSS framework
 gem 'foundation-rails', '~> 5.4.5.0'
 # Form generation
