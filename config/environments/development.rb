@@ -35,7 +35,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # For Devise
-  config.action_mailer.default_url_options = { host: 'hkstockowl.dev', port: 80 }
+  # For debugging mails
+  config.action_mailer.default_url_options = { host: 'www.hkstockowl.dev' }
+  config.action_mailer.delivery_method = :letter_opener_web
 
 end
