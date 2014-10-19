@@ -57,6 +57,8 @@ gem 'rails_12factor',       '~> 0.0.3',   group: :production
 # All envirments
 # Membership
 gem 'devise',               '~> 3.4.0'
+# CMS
+gem 'activeadmin',          github: 'gregbell/active_admin'
 # Foundation as CSS framework
 gem 'foundation-rails',     '~> 5.4.5.0'
 # Form generation
