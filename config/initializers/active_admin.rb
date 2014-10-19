@@ -162,13 +162,15 @@ ActiveAdmin.setup do |config|
   # and feel.
   #
   # To load a stylesheet:
-  #   config.register_stylesheet 'my_stylesheet.css'
+  # See: http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/
+    config.register_stylesheet 'admin/active_admin.css'
   #
   # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', :media => :print
   #
   # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
+  # See: http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/
+    config.register_javascript 'admin/active_admin.js'
 
 
   # == CSV options
