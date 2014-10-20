@@ -1,12 +1,13 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 05778f4b7c8e821d584c7b4b08bcd79c02a0db76
+  revision: 46f94a16e430a2ff476f71ec19281df36dc85b5e
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
       bourbon
       coffee-rails
       formtastic (~> 3.0)
+      formtastic_i18n
       inherited_resources (~> 1.4.1)
       jquery-rails
       jquery-ui-rails (~> 5.0)
@@ -82,6 +83,7 @@ GEM
     execjs (2.2.2)
     formtastic (3.0.0)
       actionpack (>= 3.2.13)
+    formtastic_i18n (0.1.1)
     foundation-rails (5.4.5.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
