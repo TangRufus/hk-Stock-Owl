@@ -8,6 +8,7 @@
 #  stock_company_id :integer
 #  created_at       :datetime
 #  updated_at       :datetime
+#  released_at      :datetime
 #
 # Indexes
 #
