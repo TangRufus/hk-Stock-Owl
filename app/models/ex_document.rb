@@ -16,6 +16,8 @@
 
 class ExDocument < ActiveRecord::Base
   validates :title, :link, :stock_company_id, presence: true
-  
+
+  auto_strip_attributes :title, :squish => true
+  auto_strip_attributes :link, :delete_whitespaces => true   
   belongs_to :stock_company
 end

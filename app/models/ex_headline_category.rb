@@ -15,4 +15,6 @@
 class ExHeadlineCategory < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
+  auto_strip_attributes :name, :squish => true
+
 end

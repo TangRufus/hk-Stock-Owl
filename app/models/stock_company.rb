@@ -17,6 +17,8 @@ class StockCompany < ActiveRecord::Base
   validates :name, :code, presence: true
   validates :code, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 99999 }
 
+  auto_strip_attributes :name, :squish => true
+
   has_many :ex_documents
 
 end

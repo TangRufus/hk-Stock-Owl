@@ -45,23 +45,25 @@ gem 'spring',        group: :development
 ## HK Stock Owl gems
 
 # Debugging
-gem 'binding_of_caller',    '~> 0.7.2',   group: :development
-gem 'better_errors',        '~> 2.0.0',   group: :development
-gem 'annotate',             '~> 2.6.5',   group: :development
-gem 'letter_opener_web',    '~> 1.2.3',   group: :development
+gem 'binding_of_caller',      '~> 0.7.2',   group: :development
+gem 'better_errors',          '~> 2.0.0',   group: :development
+gem 'annotate',               '~> 2.6.5',   group: :development
+gem 'letter_opener_web',      '~> 1.2.3',   group: :development
 
 # Production
 # For Heroku static asset serving
-gem 'rails_12factor',       '~> 0.0.3',   group: :production
+gem 'rails_12factor',         '~> 0.0.3',   group: :production
 
 # All envirments
 # Membership
-gem 'devise',               '~> 3.4.0'
+gem 'devise',                 '~> 3.4.0'
 # CMS
-gem 'activeadmin',          github: 'gregbell/active_admin'
+gem 'activeadmin',            github: 'gregbell/active_admin'
 # Foundation as CSS framework
-gem 'foundation-rails',     '~> 5.4.5.0'
+gem 'foundation-rails',       '~> 5.4.5.0'
 # Form generation
-gem 'simple_form',          '~> 3.0.2'
+gem 'simple_form',            '~> 3.0.2'
 # View generation
-gem 'rails_layout',         '~> 1.0.23'
+gem 'rails_layout',           '~> 1.0.23'
+# For modeling
+gem 'auto_strip_attributes',  '~> 2.0.6'
