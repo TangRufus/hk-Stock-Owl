@@ -17,4 +17,6 @@ class StockCompany < ActiveRecord::Base
   validates :name, :code, presence: true
   validates :code, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 99999 }
 
+  has_many :ex_documents
+
 end
