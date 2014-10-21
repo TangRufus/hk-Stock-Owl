@@ -20,5 +20,10 @@ class ExDocument < ActiveRecord::Base
 
   auto_strip_attributes :title, :squish => true
   auto_strip_attributes :link, :delete_whitespaces => true   
+  
   belongs_to :stock_company
+
+  has_many :ex_headlines
+  has_many :ex_headline_categories, through: :ex_headlines
+
 end

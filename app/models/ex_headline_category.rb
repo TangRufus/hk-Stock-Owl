@@ -17,4 +17,7 @@ class ExHeadlineCategory < ActiveRecord::Base
 
   auto_strip_attributes :name, :squish => true
 
+  has_many :ex_headlines
+  has_many :ex_documents, through: :ex_headlines
+
 end
