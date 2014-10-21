@@ -21,4 +21,9 @@ class StockCompany < ActiveRecord::Base
 
   has_many :ex_documents
 
+  def self.find_or_create_from_hkexnews(code, name)
+    sc = StockCompany.where(:code => code).first_or_create
+    sc.update_attributes(:name => name)
+    sc
+  end
 end

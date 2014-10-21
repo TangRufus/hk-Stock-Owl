@@ -16,7 +16,7 @@
 #
 
 class ExDocument < ActiveRecord::Base
-  validates :title, :link, :stock_company_id, presence: true
+  validates :title, :link, :stock_company_id, :released_at, presence: true
 
   auto_strip_attributes :title, :squish => true
   auto_strip_attributes :link, :delete_whitespaces => true   
@@ -25,5 +25,21 @@ class ExDocument < ActiveRecord::Base
 
   has_many :ex_headlines
   has_many :ex_headline_categories, through: :ex_headlines
+
+  def self.find_or_create_from_hkexnews(released_at, stock_code, stock_name, headline_categories, title, link)
+      sc = StockCompany.find_or_create_from_hkexnews stock_code, stock_name
+      cats = ExHeadlineCategory.find_or_create_from_hkexnews headline_categories
+
+      datetime_format = "%d/%m/%Y%H:%M %z"
+      released_at += " +0800"
+      released_at = DateTime.strptime(released_at, datetime_format)
+
+      doc = ExDocument.where(:released_at => released_at, :stock_company_id => sc.id,:title => title, :link => link).first_or_initialize
+      
+      doc.ex_headline_categories = cats
+      sc.ex_documents << doc
+
+      doc
+  end
 
 end
