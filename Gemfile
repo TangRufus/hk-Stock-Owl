@@ -67,3 +67,5 @@ gem 'simple_form',            '~> 3.0.2'
 gem 'rails_layout',           '~> 1.0.23'
 # For modeling
 gem 'auto_strip_attributes',  '~> 2.0.6'
+# Scraping HTML
+gem 'nokogiri',               '~> 1.6.3.1'

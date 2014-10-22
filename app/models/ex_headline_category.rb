@@ -21,10 +21,7 @@ class ExHeadlineCategory < ActiveRecord::Base
   has_many :ex_documents, through: :ex_headlines
 
   def self.find_or_create_from_hkexnews(names_string)
-    # gsub! returns nil if pattern does not exisit
-    names_string = names_string.gsub(' - [', '|||')
-    names_string = names_string.gsub(' / ', '|||')
-    names_string = names_string.gsub(']', '')
+    names_string = names_string.gsub(/\n/, '').gsub(/\r/, '').squeeze(" ").strip.gsub(' - [', '|||').gsub(' / ', '|||').gsub('...More', '').gsub(']', '')
 
     names_array = names_string.split("|||").uniq
     names_array.collect { |name| ExHeadlineCategory.where( :name => name.strip ).first_or_create! }
