@@ -81,4 +81,4 @@ test:
 production:
   <<: *default
   database: hk-stock-owl_production
-  password: <%= ENV['HK-STOCK-OWL_DATABASE_PASSWORD'] %>
+  password: <%= ENV['HK_STOCK_OWL_DATABASE_PASSWORD'] %>

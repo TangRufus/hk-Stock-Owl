@@ -9,6 +9,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  released_at      :datetime
+#  short_link       :text
 #
 # Indexes
 #
@@ -19,12 +20,14 @@ class ExDocument < ActiveRecord::Base
   validates :title, :link, :stock_company_id, :released_at, presence: true
 
   auto_strip_attributes :title, :squish => true
-  auto_strip_attributes :link, :delete_whitespaces => true
+  auto_strip_attributes :link, :short_link, :delete_whitespaces => true
 
   belongs_to :stock_company
 
   has_many :ex_headlines
   has_many :ex_headline_categories, through: :ex_headlines
+
+  after_create :shorten_link
 
   def self.find_or_create_from_hkexnews(hkt_released_at, stock_code, stock_name, headline_categories, title, link)
     datetime_format = "%d/%m/%Y%H:%M %z"
@@ -33,7 +36,7 @@ class ExDocument < ActiveRecord::Base
 
     sc = StockCompany.find_or_create_from_hkexnews stock_code, stock_name
 
-    title = title.gsub(/\n/, '').gsub(/\r/, '').titleize.squeeze(" ").strip
+    title = title.gsub(/\n/, ' ').gsub(/\r/, ' ').titleize.squeeze(" ").strip
     link = link.gsub(/\n/, '').gsub(/\r/, '').gsub(' ', '')
 
     doc = ExDocument.where(:released_at => released_at, :stock_company_id => sc.id, :title => title, :link => link).first
@@ -45,6 +48,15 @@ class ExDocument < ActiveRecord::Base
     end
 
     doc
+  end
+
+  def shorten_link
+    update_attribute(:short_link, Bitly.client.shorten(link).short_url) if short_link.nil?
+  end
+
+  def very_short_link
+    shorten_link if short_link.nil?
+    short_link.sub!(/^http:\/\//,'')
   end
 
 end

@@ -5,6 +5,8 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 .DS_Store
+.env
+dump.rdb
 
 # Ignore bundler config.
 /.bundle 
@@ -47,5 +49,3 @@ config/secrets.yml
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
-
-dump.rdb

@@ -55,6 +55,8 @@ gem 'letter_opener_web',      '~> 1.2.3',   group: :development
 gem 'rails_12factor',         '~> 0.0.3',   group: :production
 
 # All envirments
+# For Heroku
+gem 'foreman',                '~> 0.75.0'
 # Membership
 gem 'devise',                 '~> 3.4.0'
 # CMS
@@ -72,3 +74,5 @@ gem 'nokogiri',               '~> 1.6.3.1'
 # Background Job
 gem 'resque',                 '~> 1.25.2',  :require => 'resque/server'
 gem 'devise-async',           '~> 0.9.0'
+# URL Shortener
+gem 'bitly',                  '~> 0.10.3'

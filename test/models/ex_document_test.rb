@@ -9,6 +9,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  released_at      :datetime
+#  short_link       :text
 #
 # Indexes
 #
