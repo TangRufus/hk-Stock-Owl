@@ -71,12 +71,22 @@
 Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
+  
   devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  mount Resque::Server, :at => "/resque"
+
+  # Letter opener web interface
+  # See https://github.com/fgrehm/letter_opener_web
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -126,11 +136,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  # Letter opener web interface
-  # See https://github.com/fgrehm/letter_opener_web
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
 
 end

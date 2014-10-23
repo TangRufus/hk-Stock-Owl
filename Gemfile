@@ -69,3 +69,6 @@ gem 'rails_layout',           '~> 1.0.23'
 gem 'auto_strip_attributes',  '~> 2.0.6'
 # Scraping HTML
 gem 'nokogiri',               '~> 1.6.3.1'
+# Background Job
+gem 'resque',                 '~> 1.25.2',  :require => 'resque/server'
+gem 'devise-async',           '~> 0.9.0'
