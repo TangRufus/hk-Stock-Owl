@@ -50,6 +50,8 @@ gem 'better_errors',          '~> 2.0.0',   group: :development
 gem 'annotate',               '~> 2.6.5',   group: :development
 gem 'letter_opener_web',      '~> 1.2.3',   group: :development
 
+# Production
+gem 'rails_12factor',         '~> 0.0.3',   group: :production
 
 # All envirments
 # For worker management
