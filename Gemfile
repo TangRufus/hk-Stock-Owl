@@ -50,12 +50,9 @@ gem 'better_errors',          '~> 2.0.0',   group: :development
 gem 'annotate',               '~> 2.6.5',   group: :development
 gem 'letter_opener_web',      '~> 1.2.3',   group: :development
 
-# Production
-# For Heroku static asset serving
-gem 'rails_12factor',         '~> 0.0.3',   group: :production
 
 # All envirments
-# For Heroku
+# For worker management
 gem 'foreman',                '~> 0.75.0'
 # Membership
 gem 'devise',                 '~> 3.4.0'
