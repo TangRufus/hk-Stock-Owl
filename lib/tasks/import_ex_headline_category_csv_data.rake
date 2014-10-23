@@ -1,4 +1,4 @@
-namespace :csvimport do
+namespace :hkstockowl do
 
   desc "Import Ex Headline Category CSV Data."
   task :ex_headline_category => :environment do

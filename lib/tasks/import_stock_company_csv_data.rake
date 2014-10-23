@@ -1,4 +1,4 @@
-namespace :csvimport do
+namespace :hkstockowl do
 
   desc "Import Stock Company CSV Data."
   task :stock_company => :environment do
