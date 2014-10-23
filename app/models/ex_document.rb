@@ -27,7 +27,7 @@ class ExDocument < ActiveRecord::Base
   has_many :ex_headlines
   has_many :ex_headline_categories, through: :ex_headlines
 
-  after_create :shorten_link
+  after_commit :enqueue_link_shortener, on: [:create, :update]
 
   def self.find_or_create_from_hkexnews(hkt_released_at, stock_code, stock_name, headline_categories, title, link)
     datetime_format = "%d/%m/%Y%H:%M %z"
@@ -51,12 +51,16 @@ class ExDocument < ActiveRecord::Base
   end
 
   def shorten_link
-    update_attribute(:short_link, Bitly.client.shorten(link).short_url) if short_link.nil?
+    update_attribute(:short_link, Bitly.client.shorten(link).short_url)
   end
 
   def very_short_link
     shorten_link if short_link.nil?
     short_link.sub!(/^http:\/\//,'')
+  end
+
+  def enqueue_link_shortener
+    Resque.enqueue(ExDocumentLinkShortener, id)
   end
 
 end
