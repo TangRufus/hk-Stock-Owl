@@ -58,6 +58,8 @@ development:
 test:
   <<: *default
   database: hk_stock_owl_test
+  username: hk_stock_owl
+  password: hk_stock_owl
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
