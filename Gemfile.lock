@@ -54,7 +54,7 @@ GEM
     arel (5.0.1.20140414130214)
     auto_strip_attributes (2.0.6)
       activerecord (>= 3.0)
-    bcrypt (3.1.7)
+    bcrypt (3.1.8)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
