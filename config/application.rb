@@ -24,5 +24,8 @@ module HkStockOwl
     # See: http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/
     config.assets.precompile += %w( vendor/modernizr admin/active_admin.css admin/active_admin.js )
 
+    # For Heroku
+    # See https://devcenter.heroku.com/articles/rails-4-asset-pipeline
+    config.serve_static_assets = true
   end
 end
