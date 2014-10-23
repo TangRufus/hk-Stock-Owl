@@ -73,6 +73,7 @@ gem 'auto_strip_attributes',  '~> 2.0.6'
 gem 'nokogiri',               '~> 1.6.3.1'
 # Background Job
 gem 'resque',                 '~> 1.25.2',  :require => 'resque/server'
+gem 'resque_mailer',          '~> 2.2.7'
 gem 'devise-async',           '~> 0.9.0'
 # URL Shortener
 gem 'bitly',                  '~> 0.10.3'
