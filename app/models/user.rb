@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
 
   after_initialize :set_default_role, :if => :new_record?
 
+  scope :confirmed, -> { where("confirmed_at IS NOT NULL") }
+
   def set_default_role
     self.role ||= :user
   end

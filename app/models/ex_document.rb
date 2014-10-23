@@ -27,7 +27,8 @@ class ExDocument < ActiveRecord::Base
   has_many :ex_headlines
   has_many :ex_headline_categories, through: :ex_headlines
 
-  after_commit :enqueue_link_shortener, on: [:create, :update]
+  after_commit :enqueue_link_shortener, on: :create
+  after_commit :send_new_ex_document_notification, on: :create, :if => :released_within_1_hour?
 
   def self.find_or_create_from_hkexnews(hkt_released_at, stock_code, stock_name, headline_categories, title, link)
     datetime_format = "%d/%m/%Y%H:%M %z"
@@ -61,6 +62,18 @@ class ExDocument < ActiveRecord::Base
 
   def enqueue_link_shortener
     Resque.enqueue(ExDocumentLinkShortener, id)
+    true
+  end
+
+  def send_new_ex_document_notification
+    User.confirmed.each do |user|
+      HkExNewsMailer.new_ex_document_notification(user.email, title, link, released_at.strftime("%H:%M on %a, %e %B %Y"), self.stock_company.name, self.stock_company.code).deliver
+    end
+    true
+  end
+
+  def released_within_1_hour?
+    released_at > 1.hour.ago
   end
 
 end
