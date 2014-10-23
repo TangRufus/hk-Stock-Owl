@@ -7,8 +7,6 @@ class HkExNewsMailer < AsyncMailer
     @stock_name = stock_name
     @stock_code = stock_code
 
-    mail(:to => to_email,
-         :subject => "HK Stock Owl: #{stock_name} Latest Information",
-         )
+    mail(:to => to_email, :subject => "HK Stock Owl: #{stock_name} Latest Information")
   end
 end
