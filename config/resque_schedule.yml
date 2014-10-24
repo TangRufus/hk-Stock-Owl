@@ -1,0 +1,7 @@
+hk_ex_news_fetcher:
+  every:
+    - "120s"
+    - :first_in: '60s'
+  class: "HkExNewsFetcher"
+  queue: hk_ex_news_fetcher
+  description: "Fetch hkexnews.hk into database every 120 seconds."

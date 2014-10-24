@@ -1,2 +1,6 @@
+require 'resque'
+require 'resque-scheduler'
+require 'resque/scheduler/server'
+
 uri = URI.parse(ENV["REDIS_URL"] || 'redis://localhost:6379/')
-REDIS = Redis.new(:url => ENV['REDIS_URL'])
+REDIS = Redis.new(:url => uri)
