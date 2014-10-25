@@ -1,11 +1,14 @@
 class HkExNewsFetcher
   @queue = :hk_ex_news_fetcher
 
-  def self.perform()
+  def self.perform board = 'main', time = 'today'
+
+    url = build_source_url board, time
+
     count = 0
     start_time = Time.now
     puts start_time
-    url = 'http://www.hkexnews.hk/listedco/listconews/mainindex/SEHK_LISTEDCO_DATETIME_TODAY.HTM'
+    puts 'Order receved: ' + board + ' & ' + time
     puts "Start fetching Ex Documents from #{url} ..."
 
     html = Nokogiri::HTML(open(url))
@@ -44,5 +47,31 @@ class HkExNewsFetcher
     time_spent = Time.now - start_time
     puts 'Time spent: ' + time_spent.to_s + ' seconds'
     puts 'Fetch finished!'
+  end
+
+  private
+  def self.build_source_url board, time
+    index = 'mainindex'
+    index = 'gemindex' if board == 'growth'
+
+    case board
+    when 'growth'
+      board = 'GEM_LISTEDCO'
+    when 'warrant'
+      board = 'SEHK_DW'
+    when 'others'
+      board = 'SEHK_OTHERS'
+    else
+      board = 'SEHK_LISTEDCO'
+    end
+
+    case time
+    when 'week'
+      time = 'SEVEN'
+    else
+      time = 'TODAY'
+    end
+
+    'http://www.hkexnews.hk/listedco/listconews/' + index.downcase + '/' + board.upcase + '_DATETIME_' + time.upcase + '.HTM'
   end
 end
