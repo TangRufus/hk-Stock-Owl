@@ -40,7 +40,7 @@ class ExDocument < ActiveRecord::Base
     title = title.gsub(/\n/, ' ').gsub(/\r/, ' ').titleize.squeeze(" ").strip
     link = link.gsub(/\n/, '').gsub(/\r/, '').gsub(' ', '')
 
-    doc = ExDocument.where(:released_at => released_at, :stock_company_id => sc.id, :title => title, :link => link).first
+    doc = ExDocument.where(:released_at => released_at, :stock_company_id => sc.id, :link => link).first
 
     if doc.nil?
       doc = sc.ex_documents.create :released_at => released_at, :title => title, :link => link
