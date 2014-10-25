@@ -8,6 +8,9 @@
 .env
 dump.rdb
 
+.sass-cache/
+public/assets/
+
 # Ignore bundler config.
 /.bundle 
 
