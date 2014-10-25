@@ -51,8 +51,9 @@ class ExDocument < ActiveRecord::Base
     doc
   end
 
-  def shorten_link
-    update_attribute(:short_link, Bitly.client.shorten(link).short_url)
+  def shorten_link(force = false)
+    update_attribute(:short_link, Bitly.client.shorten(link).short_url) if short_link.nil? || force
+    short_link
   end
 
   def very_short_link
