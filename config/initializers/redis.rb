@@ -2,5 +2,7 @@ require 'resque'
 require 'resque-scheduler'
 require 'resque/scheduler/server'
 
-uri = URI.parse(ENV["REDIS_URL"] || 'redis://localhost:6379/')
-REDIS = Redis.new(:url => uri)
+if ENV["REDISCLOUD_URL"]
+    uri = URI.parse(ENV["REDISCLOUD_URL"])
+    $redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+end

@@ -28,7 +28,7 @@ after_fork do |server, worker|
     )
 
   if defined?(Resque)
-    Resque.redis = ENV['REDIS_URL']
+    Resque.redis = ENV['REDISCLOUD_URL']
     Rails.logger.info('Connected to Redis')
   end
 end
