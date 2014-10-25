@@ -2,5 +2,5 @@ Bitly.use_api_version_3
 
 Bitly.configure do |config|
   config.api_version = 3
-  config.access_token = ENV['BITLY_ACCESS_TOKEN']
+  config.access_token = Rails.application.secrets.bitly_access_token
 end
