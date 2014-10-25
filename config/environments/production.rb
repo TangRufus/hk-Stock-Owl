@@ -89,5 +89,6 @@ config.i18n.fallbacks = true
   }
 
   config.action_mailer.default_url_options = { host: 'www.hkstockowl.com' }
+  config.action_mailer.default_options = { from: 'info@hkstockowl.com' }
 
 end
