@@ -85,13 +85,13 @@ Rails.application.routes.draw do
 
   constraints admin_constraint do
     ActiveAdmin.routes(self)
-    mount Resque::Server, :at => "admin/resque"
   end
 
   # Letter opener web interface
   # See https://github.com/fgrehm/letter_opener_web
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    mount Resque::Server, :at => "admin/resque"
   end
 
   # Example of regular route:
