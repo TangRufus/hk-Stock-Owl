@@ -23,7 +23,6 @@ class StockCompany < ActiveRecord::Base
 
   def self.find_or_create_from_hkexnews(code, name)
     sc = StockCompany.where(:code => code).first_or_create
-    sc.update_attributes(:name => name)
-    sc
+    sc.update_attributes(:name => name) ? sc : nil
   end
 end
