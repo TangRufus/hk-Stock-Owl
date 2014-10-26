@@ -42,7 +42,7 @@ class ExDocument < ActiveRecord::Base
 
     doc = ExDocument.where(:released_at => released_at, :stock_company_id => sc.id, :link => link).first
 
-    if doc.nil?
+    if doc.nil? && sc.present?
       doc = sc.ex_documents.create :released_at => released_at, :title => title, :link => link
       cats = ExHeadlineCategory.find_or_create_from_hkexnews headline_categories
       doc.ex_headline_categories = cats
