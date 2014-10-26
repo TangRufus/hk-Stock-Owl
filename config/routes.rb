@@ -1,9 +1,6 @@
 # == Route Map
 #
 #                                    Prefix Verb   URI Pattern                                          Controller#Action
-#                          new_user_session GET    /users/sign_in(.:format)                             devise/sessions#new
-#                              user_session POST   /users/sign_in(.:format)                             devise/sessions#create
-#                      destroy_user_session DELETE /users/sign_out(.:format)                            devise/sessions#destroy
 #                             user_password POST   /users/password(.:format)                            devise/passwords#create
 #                         new_user_password GET    /users/password/new(.:format)                        devise/passwords#new
 #                        edit_user_password GET    /users/password/edit(.:format)                       devise/passwords#edit
@@ -19,6 +16,9 @@
 #                         user_confirmation POST   /users/confirmation(.:format)                        devise/confirmations#create
 #                     new_user_confirmation GET    /users/confirmation/new(.:format)                    devise/confirmations#new
 #                                           GET    /users/confirmation(.:format)                        devise/confirmations#show
+#                          new_user_session GET    /login(.:format)                                     devise/sessions#new
+#                              user_session POST   /login(.:format)                                     devise/sessions#create
+#                      destroy_user_session DELETE /logout(.:format)                                    devise/sessions#destroy
 #                                      root GET    /                                                    welcome#index
 #                                admin_root GET    /admin(.:format)                                     admin/dashboard#index
 #                           admin_dashboard GET    /admin/dashboard(.:format)                           admin/dashboard#index
@@ -58,8 +58,8 @@
 #                                           PATCH  /admin/users/:id(.:format)                           admin/users#update
 #                                           PUT    /admin/users/:id(.:format)                           admin/users#update
 #                                           DELETE /admin/users/:id(.:format)                           admin/users#destroy
-#                             resque_server        /admin/resque                                        Resque::Server
 #                         letter_opener_web        /letter_opener                                       LetterOpenerWeb::Engine
+#                             resque_server        /admin/resque                                        Resque::Server
 #
 # Routes for LetterOpenerWeb::Engine:
 # clear_letters DELETE /clear(.:format)                 letter_opener_web/letters#clear
@@ -71,7 +71,12 @@
 
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :skip => [:sessions]
+  as :user do
+    get 'login' => 'devise/sessions#new', :as => :new_user_session
+    post 'login' => 'devise/sessions#create', :as => :user_session
+    delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
