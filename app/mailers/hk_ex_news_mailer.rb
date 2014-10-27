@@ -1,4 +1,6 @@
 class HkExNewsMailer < AsyncMailer
+  default from: 'notification@hkstockowl.com'
+
   def new_ex_document_notification(to_email, title, link, released_at, stock_name, stock_code)
 
     @title = title
