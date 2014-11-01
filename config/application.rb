@@ -20,9 +20,9 @@ module HkStockOwl
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # For Foundation 5 & ActiveAdmin
+    # For ActiveAdmin
     # See: http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/
-    config.assets.precompile += %w( vendor/modernizr admin/active_admin.css admin/active_admin.js )
+    config.assets.precompile += %w( admin/active_admin.css admin/active_admin.js )
 
   end
 end
