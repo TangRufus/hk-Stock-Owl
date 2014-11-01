@@ -10,3 +10,4 @@
 7. Disclosure of Interests
 8. caching
 9. css themeing
+10. devise - lockable
