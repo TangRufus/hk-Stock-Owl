@@ -9,8 +9,6 @@ ruby "2.1.3"
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -60,8 +58,10 @@ gem 'foreman',                '~> 0.75.0'
 gem 'devise',                 '~> 3.4.0'
 # CMS
 gem 'activeadmin',            github: 'gregbell/active_admin'
-# Foundation as CSS framework
-gem 'foundation-rails',       '~> 5.4.5.0'
+# Bootstrap with less
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
+gem 'less-rails',             '~> 2.5.0'
+gem 'therubyracer',           '~> 0.12.1'
 # Form generation
 gem 'simple_form',            '~> 3.0.2'
 # View generation
