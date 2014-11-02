@@ -72,7 +72,5 @@ gem 'resque_mailer',            '~> 2.2.7'
 gem 'devise-async',             '~> 0.9.0'
 # URL Shortener
 gem 'bitly',                    '~> 0.10.3'
-# SMS
-gem 'telapi',                   '~> 1.2.3'
 # Performance monitor
 gem 'newrelic_rpm',             '~> 3.9.6.257'
