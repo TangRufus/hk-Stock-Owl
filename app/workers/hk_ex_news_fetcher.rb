@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class HkExNewsFetcher
   @queue = :hk_ex_news_fetcher
 
