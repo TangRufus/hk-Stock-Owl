@@ -1,5 +1,4 @@
-1. foundation --> bootstrap
- * simple form should inline errors
+1. Tracking
 2. subscription controller
  * many-to-many relationship
  * User-to-StockCompany
@@ -10,4 +9,4 @@
 7. Disclosure of Interests
 8. caching
 9. css themeing
-10. devise - lockable
+10. display notices for uncomfirmed users
