@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: c26ae0b1393311180b5137c6b4a271de3385d069
+  revision: f80974e3a14fefe48cfa37dd32ccf1fc948badb8
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -131,7 +131,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
-    launchy (2.4.2)
+    launchy (2.4.3)
       addressable (~> 2.3)
     less (2.5.1)
       commonjs (~> 0.2.7)
