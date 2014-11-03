@@ -37,7 +37,7 @@ gem 'unicorn',                  '~> 4.8.3'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-## HK Stock Owl gems
+## hkStockOwl gems
 
 # Debugging
 gem 'binding_of_caller',        '~> 0.7.2',   group: :development
