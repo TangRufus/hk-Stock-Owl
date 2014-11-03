@@ -13,12 +13,20 @@
 #                                           PATCH  /users(.:format)                                     devise/registrations#update
 #                                           PUT    /users(.:format)                                     devise/registrations#update
 #                                           DELETE /users(.:format)                                     devise/registrations#destroy
-#                         user_confirmation POST   /users/confirmation(.:format)                        devise/confirmations#create
-#                     new_user_confirmation GET    /users/confirmation/new(.:format)                    devise/confirmations#new
-#                                           GET    /users/confirmation(.:format)                        devise/confirmations#show
+#                         user_confirmation POST   /users/confirmation(.:format)                        confirmations#create
+#                     new_user_confirmation GET    /users/confirmation/new(.:format)                    confirmations#new
+#                                           GET    /users/confirmation(.:format)                        confirmations#show
+#                               user_unlock POST   /users/unlock(.:format)                              devise/unlocks#create
+#                           new_user_unlock GET    /users/unlock/new(.:format)                          devise/unlocks#new
+#                                           GET    /users/unlock(.:format)                              devise/unlocks#show
 #                          new_user_session GET    /login(.:format)                                     devise/sessions#new
 #                              user_session POST   /login(.:format)                                     devise/sessions#create
 #                      destroy_user_session DELETE /logout(.:format)                                    devise/sessions#destroy
+#                                   confirm PATCH  /confirm(.:format)                                   confirmations#confirm
+#                             new_user_join GET    /join(.:format)                                      devise/registrations#new
+#                       resend_confirmation GET    /re-confirm(.:format)                                devise/confirmations#new
+#                           forgot_password GET    /forgot-password(.:format)                           devise/passwords#new
+#                            unlock_account GET    /unlock(.:format)                                    devise/unlocks#new
 #                                      root GET    /                                                    welcome#index
 #                                admin_root GET    /admin(.:format)                                     admin/dashboard#index
 #                           admin_dashboard GET    /admin/dashboard(.:format)                           admin/dashboard#index
@@ -73,10 +81,17 @@ Rails.application.routes.draw do
 
   devise_for :users, :skip => [:sessions], :controllers => {:confirmations => 'confirmations'}
   as :user do
+    # session controller
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    # confirmable
     patch 'confirm' => "confirmations#confirm"
+    # seo links
+    get 'join' => 'devise/registrations#new', :as => :new_user_join
+    get 're-confirm' => 'devise/confirmations#new', :as => :resend_confirmation
+    get 'forgot-password' => 'devise/passwords#new', :as => :forgot_password
+    get 'unlock' => 'devise/unlocks#new', :as => :unlock_account
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -99,54 +114,4 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
     mount Resque::Server, :at => "admin/resque"
   end
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
 end
