@@ -16,4 +16,4 @@
 //= require twitter/bootstrap
 //= require mailcheck.js
 //= require mailcheck.custom.js
-//= require_tree .
+//= require_directory .
