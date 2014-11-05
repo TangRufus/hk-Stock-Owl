@@ -18,12 +18,12 @@ class HkExNewsFetcher
       hkt_released_at = row.css('td').first.text
       stock_code = row.css('td:nth-child(2)').text
       stock_name = row.css('td:nth-child(3)').text
-      headline_categories = row.css('td:nth-child(4) #hdLine').text
+      tags = row.css('td:nth-child(4) #hdLine').text
       title = row.css('td:nth-child(4) .news').text
       link = 'http://www.hkexnews.hk' + row.css('td:nth-child(4) .news').attribute('href')
 
       if stock_code.length <= 5
-        Resque.enqueue(ExDocumentBuilder, hkt_released_at, stock_code, stock_name, headline_categories, title, link)
+        Resque.enqueue(ExDocumentBuilder, hkt_released_at, stock_code, stock_name, tags, title, link)
         count += 1
       else
         # <td class="arial12black">06210<br>06230</td>
@@ -39,7 +39,7 @@ class HkExNewsFetcher
         end
 
         Hash[stock_codes.zip stock_names].each do |stock_code, stock_name|
-          Resque.enqueue(ExDocumentBuilder, hkt_released_at, stock_code, stock_name, headline_categories, title, link)
+          Resque.enqueue(ExDocumentBuilder, hkt_released_at, stock_code, stock_name, tags, title, link)
           count += 1
         end
       end

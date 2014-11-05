@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105200615) do
+ActiveRecord::Schema.define(version: 20141105222714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,23 +43,23 @@ ActiveRecord::Schema.define(version: 20141105200615) do
 
   add_index "ex_documents", ["stock_company_id"], name: "index_ex_documents_on_stock_company_id", using: :btree
 
-  create_table "ex_headline_categories", force: true do |t|
+  create_table "ex_taggings", force: true do |t|
+    t.integer  "ex_document_id"
+    t.integer  "ex_tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ex_taggings", ["ex_document_id"], name: "index_ex_taggings_on_ex_document_id", using: :btree
+  add_index "ex_taggings", ["ex_tag_id"], name: "index_ex_taggings_on_ex_tag_id", using: :btree
+
+  create_table "ex_tags", force: true do |t|
     t.string   "name",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ex_headline_categories", ["name"], name: "index_ex_headline_categories_on_name", unique: true, using: :btree
-
-  create_table "ex_headlines", force: true do |t|
-    t.integer  "ex_document_id"
-    t.integer  "ex_headline_category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ex_headlines", ["ex_document_id"], name: "index_ex_headlines_on_ex_document_id", using: :btree
-  add_index "ex_headlines", ["ex_headline_category_id"], name: "index_ex_headlines_on_ex_headline_category_id", using: :btree
+  add_index "ex_tags", ["name"], name: "index_ex_tags_on_name", unique: true, using: :btree
 
   create_table "stock_companies", force: true do |t|
     t.string   "name",       default: "", null: false

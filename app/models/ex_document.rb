@@ -24,13 +24,13 @@ class ExDocument < ActiveRecord::Base
 
   belongs_to :stock_company
 
-  has_many :ex_headlines
-  has_many :ex_headline_categories, through: :ex_headlines
+  has_many :ex_taggings
+  has_many :ex_tags, through: :ex_taggings
 
   after_commit :enqueue_link_shortener, on: :create
   after_commit :send_new_ex_document_notification, on: :create, :if => :released_within_1_hour?
 
-  def self.find_or_create_from_hkexnews(hkt_released_at, stock_code, stock_name, headline_categories, title, link)
+  def self.find_or_create_from_hkexnews(hkt_released_at, stock_code, stock_name, tags, title, link)
     datetime_format = "%d/%m/%Y%H:%M %z"
     hkt_released_at += " +0800"
     released_at = DateTime.strptime(hkt_released_at, datetime_format)
@@ -46,8 +46,8 @@ class ExDocument < ActiveRecord::Base
 
     if doc.nil?
       doc = sc.ex_documents.create :released_at => released_at, :title => title, :link => link
-      cats = ExHeadlineCategory.find_or_create_from_hkexnews headline_categories
-      doc.ex_headline_categories = cats
+      tags = ExTag.find_or_create_from_hkexnews tags
+      doc.ex_tags = tags
     end
 
     doc

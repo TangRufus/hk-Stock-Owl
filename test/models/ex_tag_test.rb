@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: ex_headline_categories
+# Table name: ex_tags
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)      default(""), not null
@@ -9,12 +9,12 @@
 #
 # Indexes
 #
-#  index_ex_headline_categories_on_name  (name) UNIQUE
+#  index_ex_tags_on_name  (name) UNIQUE
 #
 
 require 'test_helper'
 
-class ExHeadlineCategoryTest < ActiveSupport::TestCase
+class ExTagTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
