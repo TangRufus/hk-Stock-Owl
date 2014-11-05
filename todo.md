@@ -10,3 +10,7 @@
 8. caching
 9. css themeing
 10. display notices for uncomfirmed users
+11. upgrade to rails 4.2
+ * active jobs 
+  - `deliver_later` for mailers
+  - resque adaper
