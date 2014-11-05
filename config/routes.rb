@@ -57,6 +57,15 @@
 #                                           PATCH  /admin/stock_companies/:id(.:format)                 admin/stock_companies#update
 #                                           PUT    /admin/stock_companies/:id(.:format)                 admin/stock_companies#update
 #                                           DELETE /admin/stock_companies/:id(.:format)                 admin/stock_companies#destroy
+#          batch_action_admin_subscriptions POST   /admin/subscriptions/batch_action(.:format)          admin/subscriptions#batch_action
+#                       admin_subscriptions GET    /admin/subscriptions(.:format)                       admin/subscriptions#index
+#                                           POST   /admin/subscriptions(.:format)                       admin/subscriptions#create
+#                    new_admin_subscription GET    /admin/subscriptions/new(.:format)                   admin/subscriptions#new
+#                   edit_admin_subscription GET    /admin/subscriptions/:id/edit(.:format)              admin/subscriptions#edit
+#                        admin_subscription GET    /admin/subscriptions/:id(.:format)                   admin/subscriptions#show
+#                                           PATCH  /admin/subscriptions/:id(.:format)                   admin/subscriptions#update
+#                                           PUT    /admin/subscriptions/:id(.:format)                   admin/subscriptions#update
+#                                           DELETE /admin/subscriptions/:id(.:format)                   admin/subscriptions#destroy
 #                  batch_action_admin_users POST   /admin/users/batch_action(.:format)                  admin/users#batch_action
 #                               admin_users GET    /admin/users(.:format)                               admin/users#index
 #                                           POST   /admin/users(.:format)                               admin/users#create
@@ -67,7 +76,7 @@
 #                                           PUT    /admin/users/:id(.:format)                           admin/users#update
 #                                           DELETE /admin/users/:id(.:format)                           admin/users#destroy
 #                         letter_opener_web        /letter_opener                                       LetterOpenerWeb::Engine
-#                             resque_server        /admin/resque                                        Resque::Server
+#                             resque_server        /resque                                              Resque::Server
 #
 # Routes for LetterOpenerWeb::Engine:
 # clear_letters DELETE /clear(.:format)                 letter_opener_web/letters#clear
@@ -112,6 +121,6 @@ Rails.application.routes.draw do
   # See https://github.com/fgrehm/letter_opener_web
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
-    mount Resque::Server, :at => "admin/resque"
+    mount Resque::Server, :at => "/resque"
   end
 end
