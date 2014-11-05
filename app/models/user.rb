@@ -44,6 +44,9 @@ class User < ActiveRecord::Base
 
   scope :confirmed, -> { where("confirmed_at IS NOT NULL") }
 
+  has_many :subscriptions, dependent: :destroy
+  has_many :target_companies, through: :subscriptions, source: :stock_company
+
   def set_default_role
     self.role ||= :user
   end
