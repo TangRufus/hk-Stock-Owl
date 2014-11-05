@@ -110,6 +110,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   admin_constraint = lambda do |request|
+    return true if Rails.env.development?
     request.env['warden'].authenticate? and request.env['warden'].user.admin?
   end
 
