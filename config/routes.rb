@@ -28,6 +28,9 @@
 #                    forgot_password GET    /forgot-password(.:format)                    devise/passwords#new
 #                     unlock_account GET    /unlock(.:format)                             devise/unlocks#new
 #                               root GET    /                                             welcome#index
+#                      subscriptions GET    /subscriptions(.:format)                      subscriptions#index
+#                                    POST   /subscriptions(.:format)                      subscriptions#create
+#                       subscription DELETE /subscriptions/:id(.:format)                  subscriptions#destroy
 #                         admin_root GET    /admin(.:format)                              admin/dashboard#index
 #                    admin_dashboard GET    /admin/dashboard(.:format)                    admin/dashboard#index
 #    batch_action_admin_ex_documents POST   /admin/ex_documents/batch_action(.:format)    admin/ex_documents#batch_action
@@ -100,6 +103,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  resources :subscriptions, only: [:index, :create, :destroy]
 
   admin_constraint = lambda do |request|
     return true if Rails.env.development?

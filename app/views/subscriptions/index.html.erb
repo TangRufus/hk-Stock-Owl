@@ -1,0 +1,17 @@
+<h1>Subscriptions#index</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Button</th>
+  </tr>
+
+  <% @subscriptions.each do |subscription| %>
+  <tr>
+    <td><%= subscription.stock_company.name %></td>
+    <td><%= subscription.stock_company.code %></td>
+    <td><%= link_to 'Destroy', subscription_path(subscription), :authenticity_token => form_authenticity_token, :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
