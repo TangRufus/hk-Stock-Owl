@@ -65,7 +65,7 @@ gem 'simple_form',              '~> 3.0.2'
 # For modeling
 gem 'auto_strip_attributes',    '~> 2.0.6'
 # Scraping HTML
-gem 'nokogiri',                 '~> 1.6.3.1'
+gem 'nokogiri',                 '~> 1.6.4'
 # Background Job
 gem 'resque',                   '~> 1.25.2',  :require => 'resque/server'
 gem 'resque_mailer',            '~> 2.2.7'

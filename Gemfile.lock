@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 809142efe855e590331cdc41e72dcad76b719a46
+  revision: aa23647f29d5596663755822b7bfee09a3b989b6
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -147,15 +147,15 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
-    mini_portile (0.6.0)
+    mini_portile (0.6.1)
     minitest (5.4.2)
     mono_logger (1.1.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     newrelic_rpm (3.9.6.257)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
+    nokogiri (1.6.4)
+      mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -288,7 +288,7 @@ DEPENDENCIES
   less-rails (~> 2.5.0)
   letter_opener_web (~> 1.2.3)
   newrelic_rpm (~> 3.9.6.257)
-  nokogiri (~> 1.6.3.1)
+  nokogiri (~> 1.6.4)
   pg
   rails (= 4.1.7)
   rails_12factor (~> 0.0.3)
