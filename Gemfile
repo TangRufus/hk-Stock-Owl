@@ -44,7 +44,8 @@ gem 'binding_of_caller',        '~> 0.7.2',   group: :development
 gem 'better_errors',            '~> 2.0.0',   group: :development
 gem 'did_you_mean',             '~> 0.8.0',   group: :development
 gem 'annotate',                 '~> 2.6.5',   group: :development
-gem 'letter_opener_web',        '~> 1.2.3',   group: :development
+# run `gem install mailcatcher` yourself
+# see http://mailcatcher.me/#bundler
 
 # Production
 gem 'rails_12factor',           '~> 0.0.3',   group: :production

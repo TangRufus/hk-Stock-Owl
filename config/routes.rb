@@ -75,15 +75,7 @@
 #                                    PATCH  /admin/users/:id(.:format)                    admin/users#update
 #                                    PUT    /admin/users/:id(.:format)                    admin/users#update
 #                                    DELETE /admin/users/:id(.:format)                    admin/users#destroy
-#                  letter_opener_web        /letter_opener                                LetterOpenerWeb::Engine
 #                      resque_server        /resque                                       Resque::Server
-#
-# Routes for LetterOpenerWeb::Engine:
-# clear_letters DELETE /clear(.:format)                 letter_opener_web/letters#clear
-# delete_letter DELETE /:id/delete(.:format)            letter_opener_web/letters#destroy
-#       letters GET    /                                letter_opener_web/letters#index
-#        letter GET    /:id(/:style)(.:format)          letter_opener_web/letters#show
-#               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 #
 
 Rails.application.routes.draw do
@@ -121,7 +113,6 @@ Rails.application.routes.draw do
   # Letter opener web interface
   # See https://github.com/fgrehm/letter_opener_web
   if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
     mount Resque::Server, :at => "/resque"
   end
 end

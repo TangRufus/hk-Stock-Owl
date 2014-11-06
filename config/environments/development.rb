@@ -33,7 +33,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # For debugging mails
-  config.action_mailer.default_url_options    = { host: 'www.hkstockowl.dev', port: 5000 }
-  config.action_mailer.delivery_method        = :letter_opener_web
   config.action_mailer.raise_delivery_errors  = true
+  # For Devise
+  config.action_mailer.default_url_options    = { host: 'www.hkstockowl.dev', port: 5000 }
+  # For Mailcatcher
+  config.action_mailer.delivery_method        = :smtp
+  config.action_mailer.smtp_settings          = { address: 'www.hkstockowl.dev',
+                                                  port: 1025,
+                                                  domain: 'hkstockowl.dev' }
+
 end
