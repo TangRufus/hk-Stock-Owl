@@ -1,5 +1,10 @@
 <h1>Subscriptions#index</h1>
 
+<%= form_for :subscription do |f| %>
+  <%= f.text_field :code, inline_label: 'Code' %>
+  <%= f.button :submit %>
+  <% end %>
+
 <table class="table">
   <tr>
     <th>Name</th>
