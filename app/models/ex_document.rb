@@ -24,7 +24,7 @@ class ExDocument < ActiveRecord::Base
 
   belongs_to :stock_company
 
-  has_many :ex_taggings
+  has_many :ex_taggings, dependent: :destroy
   has_many :ex_tags, through: :ex_taggings
 
   after_commit :enqueue_link_shortener, on: :create
