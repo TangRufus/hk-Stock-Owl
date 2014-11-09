@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105222714) do
+ActiveRecord::Schema.define(version: 20141109051801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,15 +71,17 @@ ActiveRecord::Schema.define(version: 20141105222714) do
   add_index "stock_companies", ["code"], name: "index_stock_companies_on_code", unique: true, using: :btree
 
   create_table "subscriptions", force: true do |t|
-    t.integer  "stock_company_id", null: false
-    t.integer  "user_id",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "subscriptable_id",   null: false
+    t.string   "subscriptable_type", null: false
+    t.integer  "subscribed_id",      null: false
+    t.string   "subscribed_type",    null: false
   end
 
-  add_index "subscriptions", ["stock_company_id", "user_id"], name: "index_subscriptions_on_stock_company_id_and_user_id", unique: true, using: :btree
-  add_index "subscriptions", ["stock_company_id"], name: "index_subscriptions_on_stock_company_id", using: :btree
-  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+  add_index "subscriptions", ["subscribed_id", "subscribed_type"], name: "index_subscriptions_on_subscribed_id_and_subscribed_type", using: :btree
+  add_index "subscriptions", ["subscriptable_id", "subscriptable_type", "subscribed_id", "subscribed_type"], name: "index_unique_subscriptions", unique: true, using: :btree
+  add_index "subscriptions", ["subscriptable_id", "subscriptable_type"], name: "index_subscriptions_on_subscriptable_id_and_subscriptable_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

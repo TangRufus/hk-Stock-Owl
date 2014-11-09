@@ -21,8 +21,8 @@ class StockCompany < ActiveRecord::Base
 
   has_many :ex_documents
 
-  has_many :subscriptions
-  has_many :subscribers, through: :subscriptions, source: :user
+  has_many :subscriptions, as: :subscriptable
+  has_many :subscribers, through: :subscriptions, source: :subscribed, source_type: "User"
 
   def self.find_or_create_from_hkexnews(code, name)
     sc = StockCompany.where(:code => code).first_or_create

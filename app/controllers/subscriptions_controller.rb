@@ -18,7 +18,7 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     sub = Subscription.destroy(params[:id])
-    if sub.user == current_user && sub.destroy
+    if sub.subscribed == current_user && sub.destroy
       flash[:notice] = 'Subscription canncelled'
     else
       flash[:error] = 'Somethings wrong..'
@@ -28,7 +28,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def index
-    @subscriptions = current_user.subscriptions
+    @subscriptions = current_user.subscriptions.stock_companies
   end
 
   private

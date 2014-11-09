@@ -6,7 +6,7 @@ class CreateSubscriptions < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :subscriptions, [:stock_company_id, :user_id], unique: true
   end
 end

@@ -2,17 +2,19 @@
 #
 # Table name: subscriptions
 #
-#  id               :integer          not null, primary key
-#  stock_company_id :integer          not null
-#  user_id          :integer          not null
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id                 :integer          not null, primary key
+#  created_at         :datetime
+#  updated_at         :datetime
+#  subscriptable_id   :integer          not null
+#  subscriptable_type :string(255)      not null
+#  subscribed_id      :integer          not null
+#  subscribed_type    :string(255)      not null
 #
 # Indexes
 #
-#  index_subscriptions_on_stock_company_id              (stock_company_id)
-#  index_subscriptions_on_stock_company_id_and_user_id  (stock_company_id,user_id) UNIQUE
-#  index_subscriptions_on_user_id                       (user_id)
+#  index_subscriptions_on_subscribed_id_and_subscribed_type        (subscribed_id,subscribed_type)
+#  index_subscriptions_on_subscriptable_id_and_subscriptable_type  (subscriptable_id,subscriptable_type)
+#  index_unique_subscriptions                                      (subscriptable_id,subscriptable_type,subscribed_id,subscribed_type) UNIQUE
 #
 
 require 'test_helper'
