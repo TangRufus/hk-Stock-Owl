@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     sc = StockCompany.where(subscription_params).first
     if sc.nil?
