@@ -1,6 +1,5 @@
 class ConfirmationsController < Devise::ConfirmationsController
   # See https://github.com/plataformatec/devise/wiki/How-To:-Email-only-sign-up
-
   def show
     if params[:confirmation_token].present?
       @original_token = params[:confirmation_token]
@@ -8,10 +7,9 @@ class ConfirmationsController < Devise::ConfirmationsController
       @original_token = params[resource_name][:confirmation_token]
     end
 
-    self.resource = resource_class.find_by_confirmation_token Devise.token_generator.
-      digest(self, :confirmation_token, @original_token)
+    self.resource = resource_class.find_by_confirmation_token Devise.token_generator.digest(self, :confirmation_token, @original_token)
 
-    super if resource.nil? or resource.confirmed?
+    super if resource.nil? || resource.confirmed?
   end
 
   def confirm
@@ -30,6 +28,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   private
+
   def permitted_params
     params.require(resource_name).permit(:confirmation_token, :password, :password_confirmation)
   end

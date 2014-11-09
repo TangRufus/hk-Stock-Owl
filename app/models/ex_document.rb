@@ -19,8 +19,8 @@
 class ExDocument < ActiveRecord::Base
   validates :title, :link, :stock_company_id, :released_at, presence: true
 
-  auto_strip_attributes :title, :squish => true
-  auto_strip_attributes :link, :short_link, :delete_whitespaces => true
+  auto_strip_attributes :title, squish: true
+  auto_strip_attributes :link, :short_link, delete_whitespaces: true
 
   belongs_to :stock_company
 
@@ -30,23 +30,23 @@ class ExDocument < ActiveRecord::Base
   after_commit :enqueue_link_shortener, on: :create
   after_commit :send_new_ex_document_notification, on: :create, :if => :released_within_1_hour?
 
-  def self.find_or_create_from_hkexnews(hkt_released_at, stock_code, stock_name, tags, title, link)
-    datetime_format = "%d/%m/%Y%H:%M %z"
-    hkt_released_at += " +0800"
+  def self.provision_from_hkexnews(hkt_released_at, stock_code, stock_name, tags, title, link)
+    datetime_format = '%d/%m/%Y%H:%M %z'
+    hkt_released_at += ' +0800'
     released_at = DateTime.strptime(hkt_released_at, datetime_format)
 
-    sc = StockCompany.find_or_create_from_hkexnews stock_code, stock_name
+    sc = StockCompany.provision_from_hkexnews(stock_code, stock_name)
 
     return nil if sc.nil?
 
     title = title.gsub(/\n/, ' ').gsub(/\r/, ' ').titleize.squeeze(" ").strip
     link = link.gsub(/\n/, '').gsub(/\r/, '').gsub(' ', '')
 
-    doc = ExDocument.where(:released_at => released_at, :stock_company_id => sc.id, :link => link).first
+    doc = ExDocument.where(released_at: released_at, stock_company_id: sc.id, link: link).first
 
     if doc.nil?
-      doc = sc.ex_documents.create :released_at => released_at, :title => title, :link => link
-      tags = ExTag.find_or_create_from_hkexnews tags
+      doc = sc.ex_documents.create(released_at: released_at, title: title, link: link)
+      tags = ExTag.provision_from_hkexnews(tags)
       doc.ex_tags = tags
     end
 
@@ -54,13 +54,17 @@ class ExDocument < ActiveRecord::Base
   end
 
   def shorten_link(force = false)
-    update_attribute(:short_link, Bitly.client.shorten(link).short_url) if short_link.nil? || force
+    if short_link.nil? || force
+      s_link = Bitly.client.shorten(link).short_url
+      update(short_link: s_link)
+    end
+
     short_link
   end
 
   def very_short_link
     shorten_link if short_link.nil?
-    short_link.sub!(/^http:\/\//,'')
+    short_link.sub!(/^http:\/\//, '')
   end
 
   def enqueue_link_shortener
@@ -70,7 +74,7 @@ class ExDocument < ActiveRecord::Base
 
   def send_new_ex_document_notification
     User.confirmed.each do |user|
-      HkExNewsMailer.new_ex_document_notification(user.email, title, link, released_at.strftime("%H:%M on %a, %e %B %Y"), self.stock_company.name, self.stock_company.code).deliver
+      HkExNewsMailer.new_ex_document_notification(user.email, title, link, released_at.strftime("%H:%M on %a, %e %B %Y"), stock_company.name, stock_company.code).deliver
     end
     true
   end
@@ -78,5 +82,4 @@ class ExDocument < ActiveRecord::Base
   def released_within_1_hour?
     released_at > 1.hour.ago
   end
-
 end

@@ -10,8 +10,8 @@ namespace :hkstockowl do
 
     CSV.foreach(csv_file_path, headers: true) do |row|
 
-      sc = StockCompany.where( :code => row['Stock Code'].to_i ).first_or_initialize
-      sc.update_attributes( :name => row['Stock Name'].to_s )
+      sc = StockCompany.where(code: row['Stock Code'].to_i).first_or_initialize
+      sc.update(name: row['Stock Name'].to_s)
 
     end
 

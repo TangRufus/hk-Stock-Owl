@@ -3,8 +3,7 @@ require 'open-uri'
 class HkExNewsFetcher
   @queue = :hk_ex_news_fetcher
 
-  def self.perform board = 'main', time = 'today'
-
+  def self.perform(board = 'main', time = 'today')
     url = build_source_url board, time
 
     count = 0
@@ -38,8 +37,8 @@ class HkExNewsFetcher
           stock_names.push name.text unless name.text.empty?
         end
 
-        Hash[stock_codes.zip stock_names].each do |stock_code, stock_name|
-          Resque.enqueue(ExDocumentBuilder, hkt_released_at, stock_code, stock_name, tags, title, link)
+        Hash[stock_codes.zip stock_names].each do |s_code, s_name|
+          Resque.enqueue(ExDocumentBuilder, hkt_released_at, s_code, s_name, tags, title, link)
           count += 1
         end
       end
@@ -51,10 +50,8 @@ class HkExNewsFetcher
     puts 'Fetch finished!'
   end
 
-  private
-  def self.build_source_url board, time
-    index = 'mainindex'
-    index = 'gemindex' if board == 'growth'
+  def self.build_source_url(board, time)
+    index = board == 'growth' ? 'gemindex' : 'mainindex'
 
     case board
     when 'growth'
@@ -67,13 +64,8 @@ class HkExNewsFetcher
       board = 'SEHK_LISTEDCO'
     end
 
-    case time
-    when 'week'
-      time = 'SEVEN'
-    else
-      time = 'TODAY'
-    end
+    duration = time == 'week' ? 'SEVEN' : 'TODAY'
 
-    'http://www.hkexnews.hk/listedco/listconews/' + index.downcase + '/' + board.upcase + '_DATETIME_' + time.upcase + '.HTM'
+    'http://www.hkexnews.hk/listedco/listconews/' + index.downcase + '/' + board.upcase + '_DATETIME_' + duration.upcase + '.HTM'
   end
 end

@@ -10,7 +10,7 @@ namespace :hkstockowl do
 
     CSV.foreach(csv_file_path) do |row|
 
-      ExTag.where( :name => row[0].to_s ).first_or_create
+      ExTag.where(name: row[0].to_s).first_or_create
 
     end
 

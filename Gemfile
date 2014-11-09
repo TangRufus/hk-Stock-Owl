@@ -42,8 +42,9 @@ gem 'unicorn',                  '~> 4.8.3'
 # Debugging
 gem 'binding_of_caller',        '~> 0.7.2',   group: :development
 gem 'better_errors',            '~> 2.0.0',   group: :development
-gem 'did_you_mean',             '~> 0.8.0',   group: :development
+gem 'did_you_mean',             '~> 0.9.0',   group: :development
 gem 'annotate',                 '~> 2.6.5',   group: :development
+gem 'rubocop',                  '~> 0.27.1',  group: :development,  require: false
 # run `gem install mailcatcher` yourself
 # see http://mailcatcher.me/#bundler
 

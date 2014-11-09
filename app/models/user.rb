@@ -40,12 +40,12 @@ class User < ActiveRecord::Base
   # Keep this order, put new roles at the end
   enum role: [:user, :admin]
 
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role, if: :new_record?
 
-  scope :confirmed, -> { where("confirmed_at IS NOT NULL") }
+  scope :confirmed, -> { where('confirmed_at IS NOT NULL') }
 
   has_many :subscriptions, as: :subscribed, dependent: :destroy
-  has_many :target_companies, through: :subscriptions, source: :subscriptable, source_type: "StockCompany"
+  has_many :target_companies, through: :subscriptions, source: :subscriptable, source_type: 'StockCompany'
 
   def set_default_role
     self.role ||= :user
@@ -56,9 +56,9 @@ class User < ActiveRecord::Base
   end
 
   def password_match?
-    self.errors[:password] << "can't be blank" if password.blank?
-    self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
-    self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
+    errors[:password] << "can't be blank" if password.blank?
+    errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
+    errors[:password_confirmation] << 'does not match password' if password != password_confirmation
     password == password_confirmation && !password.blank?
   end
 
