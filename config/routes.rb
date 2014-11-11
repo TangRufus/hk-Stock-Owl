@@ -107,7 +107,6 @@ Rails.application.routes.draw do
   resources :subscriptions, only: [:index, :create, :destroy]
 
   admin_constraint = lambda do |request|
-    return true if Rails.env.development?
     request.env['warden'].authenticate? and request.env['warden'].user.admin?
   end
 
