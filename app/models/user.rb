@@ -46,6 +46,11 @@ class User < ActiveRecord::Base
 
   has_many :subscriptions, as: :subscribed, dependent: :destroy
   has_many :target_companies, through: :subscriptions, source: :subscriptable, source_type: 'StockCompany'
+  has_many :target_tags, through: :subscriptions, source: :subscriptable, source_type: 'ExTag'
+
+  def subscribed?(subscriptable)
+    target_companies.include?(subscriptable) || target_tags.include?(subscriptable)
+  end
 
   def set_default_role
     self.role ||= :user

@@ -22,4 +22,5 @@ class Subscription < ActiveRecord::Base
   belongs_to :subscribed, polymorphic: true
 
   scope :stock_companies, -> { where(subscriptable_type: 'StockCompany') }
+  scope :ex_tags, -> { where(subscriptable_type: 'ExTag') }
 end

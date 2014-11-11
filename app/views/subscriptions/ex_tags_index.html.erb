@@ -1,25 +1,23 @@
 <h1>Subscriptions#index</h1>
 
 <%= simple_form_for :subscription do |f| %>
-<%= f.hidden_field :type, value: 'stock_companies' %>
-<%= f.text_field :code, inline_label: 'Code' %>
+<%= f.hidden_field :type, value: 'ex_tags' %>
+<%= f.text_field :name, inline_label: 'Name' %>
 <%= f.button :submit %>
 <% end %>
 
 <table class="table">
   <tr>
     <th>Name</th>
-    <th>Code</th>
     <th>Button</th>
   </tr>
 
   <% @subscriptions.each do |sub| %>
   <tr>
     <td><%= sub.subscriptable.name %></td>
-    <td><%= sub.subscriptable.code %></td>
     <td>
      <%= simple_form_for(sub, method: :delete) do |f| %>
-     <%= f.hidden_field :type, value: 'stock_companies' %>
+     <%= f.hidden_field :type, value: 'ex_tags' %>
      <%= f.button :submit, 'Unfollow', class: "btn btn-danger" %>
      <% end %>
    </td>
