@@ -13,7 +13,7 @@ class HkExNewsFetcher
     puts "Start fetching Ex Documents from #{url} ..."
 
     html = Nokogiri::HTML(open(url))
-    html.css('.row0, .row1').each do |row|
+    html.css('.row0, .row1').reverse_each do |row|
       hkt_released_at = row.css('td').first.text
       stock_code = row.css('td:nth-child(2)').text
       stock_name = row.css('td:nth-child(3)').text
