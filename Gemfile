@@ -60,7 +60,7 @@ gem 'devise',                   '~> 3.4.0'
 gem 'activeadmin',              github: 'gregbell/active_admin'
 # Bootstrap with less
 gem 'twitter-bootstrap-rails',  '~> 3.2.0'
-gem 'less-rails',               '~> 2.5.0'
+gem 'less-rails',               '~> 2.6.0'
 gem 'therubyracer',             '~> 0.12.1'
 # Form generation
 gem 'simple_form',              '~> 3.0.2'

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: a08c6f9f773bf76c0172f4f142f6cac769865a01
+  revision: 98cd4644ecfe3c499c4cad494d2618da9db4adb8
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -133,11 +133,11 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
-    less (2.5.1)
+    less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.5.0)
+    less-rails (2.6.0)
       actionpack (>= 3.1)
-      less (~> 2.5.0)
+      less (~> 2.6.0)
     libv8 (3.16.14.7)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -293,7 +293,7 @@ DEPENDENCIES
   foreman (~> 0.75.0)
   jbuilder (~> 2.0)
   jquery-rails
-  less-rails (~> 2.5.0)
+  less-rails (~> 2.6.0)
   newrelic_rpm (~> 3.9.6.257)
   nokogiri (~> 1.6.4)
   pg

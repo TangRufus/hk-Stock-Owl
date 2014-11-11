@@ -18,3 +18,4 @@
 15. brakeman
 16. https://github.com/voormedia/rails-erd
 17. loading page:fetch
+18. 'using: "gin"' - the db index strategy
