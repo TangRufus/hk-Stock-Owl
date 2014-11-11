@@ -82,6 +82,9 @@
 #
 
 Rails.application.routes.draw do
+  root 'welcome#index'
+
+  resources :subscriptions, only: [:index, :create, :destroy]
 
   devise_for :users, :skip => [:sessions], :controllers => {:confirmations => 'confirmations'}
   as :user do
@@ -98,24 +101,8 @@ Rails.application.routes.draw do
     get 'unlock' => 'devise/unlocks#new', :as => :unlock_account
   end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  ActiveAdmin.routes(self)
 
-  # You can have the root of your site routed with "root"
-  root 'welcome#index'
-
-  resources :subscriptions, only: [:index, :create, :destroy]
-
-  admin_constraint = lambda do |request|
-    request.env['warden'].authenticate? and request.env['warden'].user.admin?
-  end
-
-  constraints admin_constraint do
-    ActiveAdmin.routes(self)
-  end
-
-  # Letter opener web interface
-  # See https://github.com/fgrehm/letter_opener_web
   if Rails.env.development?
     mount Resque::Server, :at => "/resque"
   end
