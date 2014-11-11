@@ -1,9 +1,9 @@
 <h1>Subscriptions#index</h1>
 
-<%= form_for :subscription do |f| %>
-  <%= f.text_field :code, inline_label: 'Code' %>
-  <%= f.button :submit %>
-  <% end %>
+<%= simple_form_for :subscription do |f| %>
+<%= f.text_field :code, inline_label: 'Code' %>
+<%= f.button :submit %>
+<% end %>
 
 <table class="table">
   <tr>
@@ -12,11 +12,15 @@
     <th>Button</th>
   </tr>
 
-  <% @subscriptions.each do |subscription| %>
+  <% @subscriptions.each do |sub| %>
   <tr>
-    <td><%= subscription.subscriptable.name %></td>
-    <td><%= subscription.subscriptable.code %></td>
-    <td><%= link_to 'Destroy', subscription_path(subscription), :authenticity_token => form_authenticity_token, :method => :delete %></td>
-  </tr>
-  <% end %>
+    <td><%= sub.subscriptable.name %></td>
+    <td><%= sub.subscriptable.code %></td>
+    <td>
+     <%= simple_form_for(sub, method: :delete) do |f| %>
+      <%= f.button :submit, 'Unfollow', class: "btn btn-danger" %>
+     <% end %>
+   </td>
+ </tr>
+ <% end %>
 </table>
