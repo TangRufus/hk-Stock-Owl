@@ -45,6 +45,7 @@ gem 'better_errors',            '~> 2.0.0',   group: :development
 gem 'did_you_mean',             '~> 0.9.0',   group: :development
 gem 'annotate',                 '~> 2.6.5',   group: :development
 gem 'rubocop',                  '~> 0.27.1',  group: :development,  require: false
+gem 'brakeman',                 '~> 2.6.3',   group: :development,  require: false
 # run `gem install mailcatcher` yourself
 # see http://mailcatcher.me/#bundler
 

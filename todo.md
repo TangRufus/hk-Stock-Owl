@@ -17,7 +17,6 @@
 18. 'using: "gin"' - the db index strategy
 
 Next:
-15. brakeman
 9. css themeing
 2. board member tracking
 6. CCASS Shareholding Search

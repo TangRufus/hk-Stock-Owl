@@ -11,8 +11,11 @@ dump.rdb
 .sass-cache/
 public/assets/
 
+# Ignore brakeman report
+brakeman.html
+
 # Ignore bundler config.
-/.bundle 
+/.bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
