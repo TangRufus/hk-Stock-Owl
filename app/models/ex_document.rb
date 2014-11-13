@@ -72,10 +72,20 @@ class ExDocument < ActiveRecord::Base
   end
 
   def send_new_ex_document_notification
-    User.confirmed.each do |user|
-      HkExNewsMailer.new_ex_document_notification(user.email, title, link, released_at.strftime("%H:%M on %a, %e %B %Y"), stock_company.name, stock_company.code).deliver
+    subscriber_list.each do |subscriber|
+      HkExNewsMailer.new_ex_document_notification(subscriber.email, title, link, released_at.strftime("%H:%M on %a, %e %B %Y"), stock_company.name, stock_company.code).deliver
     end
     true
+  end
+
+  def subscriber_list
+    list = stock_company.subscribers
+
+    list += ex_tags.map do |tag|
+      tag.subscribers
+    end
+
+    list.flatten.uniq
   end
 
   def released_within_1_hour?
