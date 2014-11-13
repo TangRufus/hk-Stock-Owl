@@ -6,7 +6,13 @@ ruby "2.1.4"
 ## Default gems
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails',                    '4.1.7'
+gem 'rails',                    '4.2.0.beta4'
+#### rails 4.2 beta4
+gem 'sass-rails',               '~> 5.0.0.beta1'
+#### rails 4.2 beta4 - ActiveAdmin
+gem 'inherited_resources',      github: 'codecraft63/inherited_resources'
+
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Uglifier as compressor for JavaScript assets
@@ -71,7 +77,6 @@ gem 'auto_strip_attributes',    '~> 2.0.6'
 gem 'nokogiri',                 '~> 1.6.4'
 # Background Job
 gem 'resque',                   '~> 1.25.2',  :require => 'resque/server'
-gem 'resque_mailer',            '~> 2.2.7'
 gem 'devise-async',             '~> 0.9.0'
 # URL Shortener
 gem 'bitly',                    '~> 0.10.3'

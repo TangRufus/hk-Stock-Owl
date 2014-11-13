@@ -13,7 +13,7 @@ before_fork do |server, worker|
     Resque.workers.each {|w| matches = w.id.match(/^[^:]*:([0-9]*):[^:]*$/); pid = matches[1]; w.unregister_worker unless w.worker_pids.include?(pid.to_s)}
     # Inject a resque working into unicorn
     # See https://www.petekeen.net/concurrency-on-heroku-cedar
-    @resque_pid ||= spawn("env TERM_CHILD=1 RESQUE_TERM_TIMEOUT=9 QUEUE=ex_document_builder,mailer,devise_mailer,* bundle exec rake resque:work")
+    @resque_pid ||= spawn("env TERM_CHILD=1 RESQUE_TERM_TIMEOUT=9 QUEUE=ex_document_builder,mailer,* bundle exec rake resque:work")
 
   defined?(ActiveRecord::Base) and
   ActiveRecord::Base.connection.disconnect!

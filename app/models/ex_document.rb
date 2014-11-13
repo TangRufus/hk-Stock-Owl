@@ -73,7 +73,7 @@ class ExDocument < ActiveRecord::Base
 
   def send_new_ex_document_notification
     subscriber_list.each do |subscriber|
-      HkExNewsMailer.new_ex_document_notification(subscriber.email, title, link, released_at.strftime("%H:%M on %a, %e %B %Y"), stock_company.name, stock_company.code).deliver
+      HkExNewsMailer.new_ex_document_notification(self, subscriber, stock_company).deliver_later
     end
     true
   end

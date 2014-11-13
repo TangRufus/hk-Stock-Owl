@@ -1,14 +1,14 @@
-class HkExNewsMailer < AsyncMailer
+class HkExNewsMailer < ActionMailer::Base
   default from: 'notification@hkstockowl.com'
 
-  def new_ex_document_notification(to_email, title, link, released_at, stock_name, stock_code)
+  def new_ex_document_notification(ex_document, subscriber, stock_company)
 
-    @title = title
-    @link = link
-    @released_at = released_at
-    @stock_name = stock_name
-    @stock_code = stock_code
+    @title = ex_document.title
+    @link = ex_document.link
+    @released_at = ex_document.released_at
+    @stock_name = stock_company.name
+    @stock_code = stock_company.code
 
-    mail(to: to_email, subject: "hkStockOwl: #{stock_name} Latest Information")
+    mail(to: subscriber.email, subject: "hkStockOwl: #{stock_company.name} Latest Information")
   end
 end
