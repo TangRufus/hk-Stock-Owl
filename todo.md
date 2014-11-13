@@ -15,6 +15,7 @@ Next:
 2. board member tracking
 18. 'using: "gin"' - the db index strategy
 6. CCASS Shareholding Search
+custom 404 & error pages
 
 Wait for paypal/rest-sdk-ruby:
 5. paypal monthly subscription: paypal-express recurring membership

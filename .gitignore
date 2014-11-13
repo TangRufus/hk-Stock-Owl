@@ -11,6 +11,11 @@ dump.rdb
 .sass-cache/
 public/assets/
 
+# Ignore cTags
+/.tags
+/.gemtags
+/.tags_sorted_by_file
+
 # Ignore brakeman report
 brakeman.html
 
