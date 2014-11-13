@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require twitter/bootstrap
 //= require mailcheck.js
 //= require mailcheck.custom.js
 //= require_directory .

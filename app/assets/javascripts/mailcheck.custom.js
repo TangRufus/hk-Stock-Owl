@@ -6,13 +6,12 @@ $(document).ready(function(){
   $email.on('blur',function() {
 
     $(this).mailcheck({
-      suggested: function(element, suggestion) { 
+      suggested: function(element, suggestion) {
 
         if(!$hint.html()) {
 
               // First error - fill in/show entire hint element
-              var suggestion = "<span class='mailcheck'>Yikes! Did you mean <a href='#' class='mailcheck-suggestion'>" + suggestion.full + 
-              "</a>?</span>";
+              var suggestion = "<span class='mailcheck'>Yikes! Did you mean <a href='#' class='mailcheck-suggestion'>" + suggestion.full + "</a>?</span>";
 
               $hint.html(suggestion).fadeIn(150);
             } else {
