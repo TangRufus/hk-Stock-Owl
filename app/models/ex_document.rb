@@ -17,17 +17,17 @@
 #
 
 class ExDocument < ActiveRecord::Base
+  include HasShortLink
+
   validates :title, :link, :stock_company_id, :released_at, presence: true
 
   auto_strip_attributes :title, squish: true
-  auto_strip_attributes :link, :short_link, delete_whitespaces: true
 
   belongs_to :stock_company
 
   has_many :ex_taggings, dependent: :destroy
   has_many :ex_tags, through: :ex_taggings
 
-  after_commit :enqueue_link_shortener, on: :create
   after_commit :send_new_ex_document_notification, on: :create, :if => :released_within_1_hour?
 
   def self.provision_from_hkexnews(hkt_released_at, stock_code, stock_name, tags, title, link)
@@ -52,30 +52,10 @@ class ExDocument < ActiveRecord::Base
     doc
   end
 
-  def shorten_link(force = false)
-    if short_link.nil? || force
-      s_link = Bitly.client.shorten(link).short_url
-      update(short_link: s_link)
-    end
-
-    short_link
-  end
-
-  def very_short_link
-    shorten_link if short_link.nil?
-    short_link.sub!(/^http:\/\//, '')
-  end
-
-  def enqueue_link_shortener
-    Resque.enqueue(ExDocumentLinkShortener, id)
-    true
-  end
-
   def send_new_ex_document_notification
     subscriber_list.each do |subscriber|
       HkExNewsMailer.new_ex_document_notification(self, subscriber, stock_company).deliver_later
     end
-    true
   end
 
   def subscriber_list
