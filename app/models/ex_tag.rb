@@ -13,15 +13,14 @@
 #
 
 class ExTag < ActiveRecord::Base
+  include Subscriptable
+
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   auto_strip_attributes :name, squish: true
 
   has_many :ex_taggings, dependent: :destroy
   has_many :ex_documents, through: :ex_taggings
-
-  has_many :subscriptions, as: :subscriptable, dependent: :destroy
-  has_many :subscribers, through: :subscriptions, source: :subscribed, source_type: "User"
 
   def self.provision_from_hkexnews(names_string)
     names_string = names_string.gsub(/\n/, '').gsub(/\r/, '').squeeze(' ').strip.gsub(' - [', '|||').gsub(' / ', '|||').gsub('...More', '').gsub(']', '')
