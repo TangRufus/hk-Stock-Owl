@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 ## Ruby version
-ruby "2.1.4"
+### Update .ruby-version as well
+ruby "2.1.5"
 
 ## Default gems
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails',                    '4.2.0.beta4'
 ### rails 4.2 beta4
 gem 'sass-rails',               '~> 5.0.0.beta1'
@@ -35,22 +35,22 @@ gem 'unicorn',                  '~> 4.8.3'
 gem 'spring',                                 group: :development
 
 
-## hkStockOwl gems
+# hkStockOwl gems
 
-# Debugging
+## Debugging
 gem 'binding_of_caller',        '~> 0.7.2',   group: :development
 gem 'better_errors',            '~> 2.0.0',   group: :development
 gem 'did_you_mean',             '~> 0.9.0',   group: :development
 gem 'annotate',                 '~> 2.6.5',   group: :development
 gem 'rubocop',                  '~> 0.27.1',  group: :development,  require: false
 gem 'brakeman',                 '~> 2.6.3',   group: :development,  require: false
-# run `gem install mailcatcher` yourself
-# see http://mailcatcher.me/#bundler
+### run `gem install mailcatcher` yourself
+### see http://mailcatcher.me/#bundler
 
-# Production
+## Production
 gem 'rails_12factor',           '~> 0.0.3',   group: :production
 
-# All envirments
+## All envirments
 # For worker management
 gem 'foreman',                  '~> 0.75.0'
 # Membership
