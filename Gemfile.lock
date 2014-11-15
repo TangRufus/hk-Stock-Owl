@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 05c31283beedb0e2a183b63057788312afd922ab
+  revision: 99d76711783c229965095d4b818d02b46093ba5e
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -174,7 +174,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    newrelic_rpm (3.9.6.257)
+    newrelic_rpm (3.9.7.266)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
@@ -259,7 +259,7 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.5.0)
       sexp_processor (~> 4.1)
-    sass (3.4.7)
+    sass (3.4.8)
     sass-rails (5.0.0.beta1)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2)
@@ -330,7 +330,7 @@ DEPENDENCIES
   inherited_resources!
   jbuilder (~> 2.0)
   jquery-rails
-  newrelic_rpm (~> 3.9.6.257)
+  newrelic_rpm (~> 3.9.7.266)
   nokogiri (~> 1.6.4)
   pg
   rails (= 4.2.0.beta4)

@@ -69,4 +69,4 @@ gem 'devise-async',             '~> 0.9.0'
 # URL Shortener
 gem 'bitly',                    '~> 0.10.3'
 # Performance monitor
-gem 'newrelic_rpm',             '~> 3.9.6.257'
+gem 'newrelic_rpm',             '~> 3.9.7.266'
