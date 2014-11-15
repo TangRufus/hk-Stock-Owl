@@ -17,7 +17,7 @@ module HasShortLink
   end
 
   def very_short_link
-    shorten_link if short_link.nil?
-    short_link.sub(/^http:\/\//, '') if short_link
+    shorten_link if short_links
+    short_link.sub(/^http:\/\//, '').sub(/^https:\/\//, '') if short_link
   end
 end

@@ -6,7 +6,6 @@
 14. sitemap_generator
 16. https://github.com/voormedia/rails-erd
 17. loading page:fetch
-19. workers --> activeJobs
 
 
 Next:
