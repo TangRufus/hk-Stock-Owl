@@ -22,7 +22,7 @@ module HkStockOwl
 
     # For ActiveAdmin
     # See: http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/
-    config.assets.precompile += %w( admin/active_admin.css admin/active_admin.js )
+    config.assets.precompile += %w( admin/active_admin.css admin/active_admin.js active_admin/print.css)
 
   end
 end
