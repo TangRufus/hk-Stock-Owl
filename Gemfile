@@ -57,6 +57,10 @@ gem 'foreman',                  '~> 0.75.0'
 gem 'devise',                   '~> 3.4.0'
 # CMS
 gem 'activeadmin',              github: 'gregbell/active_admin'
+# Theme
+gem 'bootstrap-sass',           '~> 3.3.1.0'
+gem 'autoprefixer-rails',       '~> 4.0.0.1'
+gem 'font-awesome-sass',        '~> 4.2.2'
 # Form generation
 gem 'simple_form',              '~> 3.0.2'
 # For modeling

@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
+//= require app_ui_plugins.js
+//= require app_ui_app.js
 //= require turbolinks
 //= require mailcheck.js
 //= require mailcheck.custom.js
