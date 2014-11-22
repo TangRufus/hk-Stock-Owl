@@ -22,7 +22,9 @@ module HkStockOwl
 
     # For ActiveAdmin
     # See: http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/
-    config.assets.precompile += %w( admin/active_admin.css admin/active_admin.js active_admin/print.css)
+    config.assets.precompile += %w(backend.css admin/active_admin.css admin/active_admin.js active_admin/print.css)
 
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
