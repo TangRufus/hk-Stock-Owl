@@ -54,7 +54,7 @@ gem 'rails_12factor',           '~> 0.0.3',   group: :production
 # For worker management
 gem 'foreman',                  '~> 0.75.0'
 # Membership
-gem 'devise',                   '~> 3.4.0'
+gem 'devise',                   github: 'plataformatec/devise'
 # CMS
 gem 'activeadmin',              github: 'gregbell/active_admin'
 # Theme
@@ -69,7 +69,6 @@ gem 'auto_strip_attributes',    '~> 2.0.6'
 gem 'nokogiri',                 '~> 1.6.4'
 # Background Job
 gem 'resque',                   '~> 1.25.2',  :require => 'resque/server'
-gem 'devise-async',             '~> 0.9.0'
 # URL Shortener
 gem 'bitly',                    '~> 0.10.3'
 # Performance monitor

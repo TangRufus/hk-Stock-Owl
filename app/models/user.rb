@@ -35,7 +35,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :async
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
   # Keep this order, put new roles at the end
   enum role: [:user, :admin]
@@ -67,4 +67,8 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
+  # Remove after Devise move to Rails 4.2
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later(queue: :devise_mailer)
+  end
 end
