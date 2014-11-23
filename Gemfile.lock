@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: b7562c0a77454299da22f9f33ac98b245d8cb079
+  revision: 75c1d48788eaf55e0cc8795ee214586bf0bdf80e
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 16005ebcfeda30a994dc54e4b4dbb0dc6d74dc64
+  revision: 681094663bd2d24ebe39ad1a8e0ced6931a6a545
   specs:
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -81,7 +81,7 @@ GEM
       rake (>= 0.8.7)
     arbre (1.0.2)
       activesupport (>= 3.0.0)
-    arel (6.0.0.beta2)
+    arel (6.0.0)
     ast (2.0.0)
     astrolabe (1.3.0)
       parser (>= 2.2.0.pre.3, < 3.0)
@@ -128,9 +128,7 @@ GEM
     debug_inspector (0.0.2)
     did_you_mean (0.9.4)
       interception
-    dotenv (0.11.1)
-      dotenv-deployment (~> 0.0.2)
-    dotenv-deployment (0.0.2)
+    dotenv (1.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     faraday (0.9.0)
@@ -138,10 +136,10 @@ GEM
     fastercsv (1.5.5)
     font-awesome-sass (4.2.2)
       sass (~> 3.2)
-    foreman (0.75.0)
-      dotenv (~> 0.11.1)
+    foreman (0.76.0)
+      dotenv (~> 1.0.2)
       thor (~> 0.19.1)
-    formtastic (3.1.1)
+    formtastic (3.1.2)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.1.1)
     globalid (0.3.0)
@@ -161,13 +159,14 @@ GEM
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-rails (3.1.2)
-      railties (>= 3.0, < 5.0)
+    jquery-rails (4.0.0)
+      rails-dom-testing (~> 1.0)
+      railties (>= 4.2.0.beta, < 5.0)
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.2)
       railties (>= 3.2.16)
     json (1.8.1)
-    jwt (1.0.0)
+    jwt (1.2.0)
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -218,7 +217,7 @@ GEM
       sprockets-rails (~> 3.0.0.beta1)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.4)
+    rails-dom-testing (1.0.5)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -236,15 +235,13 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     raindrops (0.13.0)
-    rake (10.3.2)
+    rake (10.4.0)
     ransack (1.5.1)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.1)
-    rdoc (4.1.2)
-      json (~> 1.4)
     redis (3.1.0)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
@@ -268,17 +265,14 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.5.0)
       sexp_processor (~> 4.1)
-    sass (3.4.8)
+    sass (3.4.9)
     sass-rails (5.0.0.beta1)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2)
       sprockets (~> 2.12)
       sprockets-rails (>= 2.0, < 4.0)
-    sdoc (0.4.1)
-      json (~> 1.7, >= 1.7.7)
-      rdoc (~> 4.0)
     sexp_processor (4.4.4)
-    simple_form (3.0.2)
+    simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     sinatra (1.4.5)
@@ -289,7 +283,6 @@ GEM
       temple (~> 0.6.9)
       tilt (>= 1.3.3, < 2.1)
     slop (3.6.0)
-    spring (1.2.0)
     sprockets (2.12.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -337,7 +330,7 @@ DEPENDENCIES
   devise!
   did_you_mean (~> 0.9.0)
   font-awesome-sass (~> 4.2.2)
-  foreman (~> 0.75.0)
+  foreman (~> 0.76.0)
   inherited_resources!
   jbuilder (~> 2.0)
   jquery-rails
@@ -349,9 +342,7 @@ DEPENDENCIES
   resque (~> 1.25.2)
   rubocop (~> 0.27.1)
   sass-rails (~> 5.0.0.beta1)
-  sdoc (~> 0.4.0)
-  simple_form (~> 3.0.2)
-  spring
+  simple_form (~> 3.1.0)
   turbolinks
   uglifier (>= 1.3.0)
   unicorn (~> 4.8.3)
