@@ -1,18 +1,22 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="http://www.hkstockowl.com/">hkStockOwl</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div class="container">
+  <!-- Site Logo -->
+  <%= link_to 'hkStockOwl', root_path, class: 'site-logo' %>
+  <!-- END Site Logo -->
+
+  <!-- Site Navigation -->
+  <nav>
+    <!-- Menu Toggle -->
+    <!-- Toggles menu on small screens -->
+    <a href="javascript:void(0)" class="btn btn-default site-menu-toggle visible-xs visible-sm">
+      Menu
+    </a>
+    <!-- END Menu Toggle -->
+
+    <!-- Main Menu -->
+    <ul class="site-nav">
+      <%= render 'layouts/navigation_links' %>
+    </ul>
+    <!-- END Main Menu -->
+  </nav>
+  <!-- END Site Navigation -->
+</div>

@@ -1,5 +1,5 @@
 v1.0.0
-'using: "gin"' - the db index strategy
+form --> button_to
 db use text instead of string
 pundit
 Theming
@@ -34,3 +34,4 @@ board member tracking
 CCASS Shareholding Search
 Disclosure of Interests
 heroku assests error
+'using: "gin"' - the db index strategy

@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "hkStockOwl" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "hkStockOwl" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
-  </body>
+</head>
+
+<!-- Body -->
+<body>
+    <!-- Page Container -->
+    <div id="page-container">
+        <!-- Site Header -->
+        <header>
+            <%= render 'layouts/navigation' %>
+        </header>
+        <!-- END Site Header -->
+
+        <%= yield %>
+
+        <!-- Footer -->
+        <footer class="site-footer site-section site-section-light">
+            <%= render 'layouts/footer' %>
+        </footer>
+        <!-- END Footer -->
+    </div>
+    <!-- END Page Container -->
+
+    <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
+    <a href="#" id="to-top"><i class="fa fa-arrow-up"></i></a>
+
+</body>
 </html>

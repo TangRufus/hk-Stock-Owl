@@ -1,0 +1,32 @@
+<div class="container">
+    <!-- Footer Links -->
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 class="footer-heading">Company</h4>
+            <ul class="footer-nav ul-breath list-unstyled">
+                <li><a href="javascript:void(0)">About Us</a></li>
+                <li><a href="javascript:void(0)">Our Team</a></li>
+                <li><a href="javascript:void(0)">Pricing</a></li>
+                <li><a href="javascript:void(0)">Terms &amp; Conditions</a></li>
+                <li><a href="javascript:void(0)">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="footer-heading">Need support?</h4>
+            <ul class="footer-nav footer-nav-links list-inline">
+                <%= render 'layouts/support_links' %>
+            </ul>
+            <h4 class="footer-heading">We are social!</h4>
+            <ul class="footer-nav footer-nav-links list-inline">
+                <%= render 'layouts/social_links' %>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="footer-heading">Newsletter</h4>
+            <%= render 'layouts/newsletter_form' %>
+            <h4 class="footer-heading"><a href="http://www.hkStockOwl.com">hkStockOwl</a></h4>
+            <em><span id="year-copy"></span></em> &copy; Crafted with <i class="fa fa-heart text-danger"></i> in Hong Kong
+        </div>
+    </div>
+    <!-- END Footer Links -->
+</div>
