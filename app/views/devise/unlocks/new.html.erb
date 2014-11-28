@@ -1,9 +1,4 @@
-<!-- Login Title -->
-<div class="block-title">
-  <%= render 'devise/shared/links' %>
-  <h2>Resend unlock email</h2>
-</div>
-<!-- END Login Title -->
+<% page_title '重啟帳號' %>
 
 <!-- Login Form -->
 <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), wrapper: :vertical_form, html: { method: :post }) do |f| %>

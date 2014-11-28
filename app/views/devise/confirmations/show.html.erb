@@ -1,9 +1,4 @@
-<!-- Login Title -->
-<div class="block-title">
-  <%= render 'devise/shared/links' %>
-  <h2>You're almost done! Now create a password to securely access your account.s</h2>
-</div>
-<!-- END Login Title -->
+<% page_title '設立密碼' %>
 
 <!-- Login Form -->
 <%= simple_form_for(resource, as: resource_name, url: confirm_path, wrapper: :vertical_form, html: { method: :patch }) do |f| %>

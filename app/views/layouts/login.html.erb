@@ -11,8 +11,8 @@
 
 <!-- Body -->
 <body>
-   <!-- Login Container -->
-   <div id="login-container">
+  <!-- Login Container -->
+  <div id="login-container">
     <!-- Login Header -->
     <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
         <strong>hkStockOwl</strong>
@@ -23,17 +23,23 @@
 
     <!-- Login Block -->
     <div class="block animation-fadeInQuickInv">
+        <!-- Login Title -->
+        <div class="block-title">
+          <%= render 'devise/shared/links' %>
+          <h2><%= content_for?(:title) ? yield(:title) : "hkStockOwl" %></h2>
+        </div>
+        <!-- END Login Title -->
+
         <%= yield %>
     </div>
     <!-- END Login Block -->
 
     <!-- Footer -->
     <footer class="text-muted text-center animation-pullUp">
-    <small><span id="year-copy"></span> &copy; <%= link_to("hkStockOwl", root_path) %></small>
+      <small><span id="year-copy"></span> &copy; <%= link_to("hkStockOwl", root_path) %></small>
     </footer>
     <!-- END Footer -->
-</div>
-<!-- END Login Container -->
-
+  </div>
+  <!-- END Login Container -->
 </body>
 </html>

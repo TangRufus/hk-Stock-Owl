@@ -1,9 +1,4 @@
-<!-- Login Title -->
-<div class="block-title">
-  <%= render 'devise/shared/links' %>
-  <h2>Please Login</h2>
-</div>
-<!-- END Login Title -->
+<% page_title '登入' %>
 
 <!-- Login Form -->
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :vertical_form, html: { method: :post}) do |f| %>

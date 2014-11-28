@@ -1,9 +1,4 @@
-<!-- Login Title -->
-<div class="block-title">
-  <%= render 'devise/shared/links' %>
-  <h2>Resend confirmation instructions</h2>
-</div>
-<!-- END Login Title -->
+<% page_title '重發確認郵件' %>
 
 <!-- Login Form -->
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), wrapper: :vertical_form, html: { method: :post }) do |f| %>

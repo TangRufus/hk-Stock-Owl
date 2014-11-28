@@ -1,9 +1,4 @@
-<!-- Login Title -->
-<div class="block-title">
-  <%= render 'devise/shared/links' %>
-  <h2>Change your password</h2>
-</div>
-<!-- END Login Title -->
+<% page_title '更改密碼' %>
 
 <!-- Login Form -->
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), wrapper: :vertical_form, html: { method: :put }) do |f| %>
