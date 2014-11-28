@@ -60,6 +60,6 @@ class HkExNewsFetcherJob < ActiveJob::Base
 
     @range = (time == 'week') ? 'SEVEN' : 'TODAY'
 
-    @url = 'http://www.hkexnews.hk/listedco/listconews/' + index.downcase + '/' + @board.upcase + '_DATETIME_' + @range.upcase + '.HTM'
+    @url = 'http://www.hkexnews.hk/listedco/listconews/' + index.downcase + '/' + @board.upcase + '_DATETIME_' + @range.upcase + '_C.HTM'
   end
 end

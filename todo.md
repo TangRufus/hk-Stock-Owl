@@ -1,13 +1,12 @@
 v1.0.0
 form --> button_to
-db use text instead of string
 pundit
 Theming
- - login
+ - edit account
  - frontend
- - backend
+ - target com
+ - target tag
 content_for :title
-change chinese hkexnews
 handle hkexnews tag: ...More
 sepreate target_tag & target company controllers
 custom 404 & error pages
