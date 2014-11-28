@@ -9,12 +9,17 @@ ruby "2.1.5"
 gem 'rails',                    '4.2.0.beta4'
 ### rails 4.2 beta4
 gem 'sass-rails',               '~> 5.0.0.beta1'
+### rails 4.2 beta4 - Migration error
+gem 'arel',                     '6.0.0.beta2'
 ### rails 4.2 beta4 - ActiveAdmin
 gem 'inherited_resources',      github: 'codecraft63/inherited_resources'
 
 
 # Use postgresql as the database for Active Record
+# Run `gem install pg -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.3/bin/pg_config` instead of `bundle install`
 gem 'pg'
+
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier',                 '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

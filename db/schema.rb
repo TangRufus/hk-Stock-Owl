@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109051801) do
+ActiveRecord::Schema.define(version: 20141105200615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
-    t.string   "namespace"
+    t.text     "namespace"
     t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
+    t.text     "resource_id",   null: false
+    t.text     "resource_type", null: false
     t.integer  "author_id"
     t.string   "author_type"
     t.datetime "created_at"
@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 20141109051801) do
   create_table "ex_documents", force: true do |t|
     t.text     "title",            default: "",                        null: false
     t.text     "link",             default: "http://www.hkexnews.hk/", null: false
+    t.text     "short_link",       default: ""
     t.integer  "stock_company_id"
+    t.datetime "released_at",                                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "released_at"
-    t.text     "short_link"
   end
 
   add_index "ex_documents", ["stock_company_id"], name: "index_ex_documents_on_stock_company_id", using: :btree
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141109051801) do
   add_index "ex_taggings", ["ex_tag_id"], name: "index_ex_taggings_on_ex_tag_id", using: :btree
 
   create_table "ex_tags", force: true do |t|
-    t.string   "name",       default: "", null: false
+    t.text     "name",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20141109051801) do
   add_index "ex_tags", ["name"], name: "index_ex_tags_on_name", unique: true, using: :btree
 
   create_table "stock_companies", force: true do |t|
-    t.string   "name",       default: "", null: false
+    t.text     "name",       default: "", null: false
     t.integer  "code",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -71,22 +71,22 @@ ActiveRecord::Schema.define(version: 20141109051801) do
   add_index "stock_companies", ["code"], name: "index_stock_companies_on_code", unique: true, using: :btree
 
   create_table "subscriptions", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "subscriptable_id",   null: false
     t.string   "subscriptable_type", null: false
     t.integer  "subscribed_id",      null: false
     t.string   "subscribed_type",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "subscriptions", ["subscribed_id", "subscribed_type"], name: "index_subscriptions_on_subscribed_id_and_subscribed_type", using: :btree
+  add_index "subscriptions", ["subscribed_type", "subscribed_id"], name: "index_subscriptions_on_subscribed_type_and_subscribed_id", using: :btree
   add_index "subscriptions", ["subscriptable_id", "subscriptable_type", "subscribed_id", "subscribed_type"], name: "index_unique_subscriptions", unique: true, using: :btree
-  add_index "subscriptions", ["subscriptable_id", "subscriptable_type"], name: "index_subscriptions_on_subscriptable_id_and_subscriptable_type", using: :btree
+  add_index "subscriptions", ["subscriptable_type", "subscriptable_id"], name: "index_subscriptions_on_subscriptable_type_and_subscriptable_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.text     "email",                  default: "", null: false
+    t.text     "encrypted_password",     default: "", null: false
+    t.text     "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          default: 0,  null: false
@@ -94,16 +94,16 @@ ActiveRecord::Schema.define(version: 20141109051801) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.text     "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.text     "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 0,  null: false
+    t.text     "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "role",                   default: 0
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0
-    t.string   "unlock_token"
-    t.datetime "locked_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
