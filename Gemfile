@@ -6,12 +6,10 @@ ruby "2.1.5"
 
 ## Default gems
 
-gem 'rails',                    '4.2.0.beta4'
-### rails 4.2 beta4
+gem 'rails',                    '4.2.0.rc1'
+# ### rails 4.2.0.rc1
 gem 'sass-rails',               '~> 5.0.0.beta1'
-### rails 4.2 beta4 - Migration error
-gem 'arel',                     '6.0.0.beta2'
-### rails 4.2 beta4 - ActiveAdmin
+### rails 4.2.0.rc1 - ActiveAdmin
 gem 'inherited_resources',      github: 'codecraft63/inherited_resources'
 
 

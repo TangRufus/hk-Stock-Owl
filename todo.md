@@ -7,7 +7,6 @@ Theming
  - target com
  - target tag
 content_for :title
-handle hkexnews tag: ...More
 sepreate target_tag & target company controllers
 custom 404 & error pages
 footer links
