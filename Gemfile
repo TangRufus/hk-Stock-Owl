@@ -9,6 +9,7 @@ ruby "2.1.5"
 gem 'rails',                    '4.2.0.rc1'
 # ### rails 4.2.0.rc1
 gem 'sass-rails',               '~> 5.0.0.beta1'
+gem 'sprockets-rails',          '~> 3.0.0.beta1'
 ### rails 4.2.0.rc1 - ActiveAdmin
 gem 'inherited_resources',      github: 'codecraft63/inherited_resources'
 
