@@ -7,9 +7,6 @@ ruby "2.1.5"
 ## Default gems
 
 gem 'rails',                    '4.2.0.rc1'
-# ### rails 4.2.0.rc1
-gem 'sass-rails',               '~> 5.0.0.beta1'
-gem 'sprockets-rails',          '~> 3.0.0.beta1'
 ### rails 4.2.0.rc1 - ActiveAdmin
 gem 'inherited_resources',      github: 'codecraft63/inherited_resources'
 
@@ -18,7 +15,8 @@ gem 'inherited_resources',      github: 'codecraft63/inherited_resources'
 # Run `gem install pg -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.3/bin/pg_config` instead of `bundle install`
 gem 'pg'
 
-
+# Use SCSS for stylesheets
+gem 'sass-rails',               '~> 5.0.0.beta1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier',                 '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -29,23 +27,29 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder',                 '~> 2.0'
+# Use Rails Html Sanitizer for HTML sanitization
+gem 'rails-html-sanitizer',     '~> 1.0'
 # Use unicorn as the app server
 gem 'unicorn',                  '~> 4.8.3'
 
 # hkStockOwl gems
 
 ## Debugging
-gem 'binding_of_caller',        '~> 0.7.2',   group: :development
-gem 'better_errors',            '~> 2.0.0',   group: :development
-gem 'did_you_mean',             '~> 0.9.0',   group: :development
-gem 'annotate',                 '~> 2.6.5',   group: :development
-gem 'rubocop',                  '~> 0.27.1',  group: :development,  require: false
-gem 'brakeman',                 '~> 2.6.3',   group: :development,  require: false
-### run `gem install mailcatcher` yourself
-### see http://mailcatcher.me/#bundler
+group :development do
+  gem 'binding_of_caller',        '~> 0.7.2'
+  gem 'better_errors',            '~> 2.0.0'
+  gem 'did_you_mean',             '~> 0.9.0'
+  gem 'annotate',                 '~> 2.6.5'
+  gem 'rubocop',                  '~> 0.27.1',  require: false
+  gem 'brakeman',                 '~> 2.6.3',   require: false
+  ### run `gem install mailcatcher` yourself
+  ### see http://mailcatcher.me/#bundler
+end
 
 ## Production
-gem 'rails_12factor',           '~> 0.0.3',   group: :production
+group :production do
+  gem 'rails_12factor',           '~> 0.0.3'
+end
 
 ## All envirments
 # For worker management
