@@ -20,10 +20,6 @@ module HkStockOwl
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # For ActiveAdmin
-    # See: http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/
-    config.assets.precompile += %w(backend.css admin/active_admin.css admin/active_admin.js active_admin/print.css)
-
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
