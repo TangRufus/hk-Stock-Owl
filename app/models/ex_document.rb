@@ -30,18 +30,11 @@ class ExDocument < ActiveRecord::Base
 
   after_commit :send_new_ex_document_notification, on: :create, :if => :released_within_1_hour?
 
-  def self.provision_from_hkexnews(hkt_released_at, stock_code, stock_name, tags, title, link)
+  def self.provision_from_hkexnews(released_at, stock_code, stock_name, tags, title, link)
     sc = StockCompany.provision_from_hkexnews(stock_code, stock_name)
     return nil if sc.nil?
 
-    datetime_format = '%d/%m/%Y%H:%M %z'
-    hkt_released_at += ' +0800'
-    released_at = DateTime.strptime(hkt_released_at, datetime_format)
-
-    title = title.gsub(/\n/, ' ').gsub(/\r/, ' ').titleize.squeeze(" ").strip
-    link = link.gsub(/\n/, '').gsub(/\r/, '').gsub(' ', '')
-
-    doc = ExDocument.where(released_at: released_at, stock_company_id: sc.id, link: link).first
+    doc = ExDocument.find_by(released_at: released_at, stock_company_id: sc.id, link: link)
 
     if doc.nil?
       doc = sc.ex_documents.create(released_at: released_at, title: title, link: link)

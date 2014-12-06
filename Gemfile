@@ -6,7 +6,7 @@ ruby "2.1.5"
 
 ## Default gems
 
-gem 'rails',                    '4.2.0.rc1'
+gem 'rails',                    '4.2.0.rc2'
 ### rails 4.2.0.rc1 - ActiveAdmin
 gem 'inherited_resources',      github: 'codecraft63/inherited_resources'
 
@@ -73,4 +73,4 @@ gem 'resque',                   '~> 1.25.2',  :require => 'resque/server'
 # URL Shortener
 gem 'bitly',                    '~> 0.10.3'
 # Performance monitor
-gem 'newrelic_rpm',             '~> 3.9.7.266'
+gem 'newrelic_rpm',             '~> 3.9.8.273'

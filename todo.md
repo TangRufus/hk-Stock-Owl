@@ -1,35 +1,52 @@
-v1.0.0
-form --> button_to
+-----------------> v1.0.0 <------------------
+Refactor fetcher
+form -> button_to
 pundit
 Theming
  - edit account
  - frontend
  - target com
  - target tag
-content_for :title
 sepreate target_tag & target company controllers
 custom 404 & error pages
 footer links
 bullet
 Tracking: segment.io
 mailchimp
-TOC
-
----------------------------------------------
-
-Wait for paypal/rest-sdk-ruby:
-5. paypal monthly subscription: paypal-express recurring membership
-
----------------------------------------------
+Terms and conditions
+Fix fetcher bugs
 
 
+
+-----------------> v1.1.0 <------------------
+board member tracking
+company show
+ppl show
 caching
   - fresh_when eTag
-display notices for uncomfirmed users?
+  - dalli
+  - gzip
 sitemap_generator
-loading page:fetch
-board member tracking
+contact form
+
+
+
+-----------------> v1.1.1 <------------------
+write Tests
+
+
+
+-----------------> v1.2.0 <------------------
 CCASS Shareholding Search
 Disclosure of Interests
+
+
+
+-------> Wait for paypal/rest-sdk-ruby <-----
+paypal monthly subscription: paypal-express recurring membership
+
+
+
+----> IceBox
 heroku assests error
 'using: "gin"' - the db index strategy
